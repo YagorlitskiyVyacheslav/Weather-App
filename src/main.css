@@ -1,0 +1,11 @@
+.f input {
+  width: 280px;
+  height: 48px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px;
+  background: #ffffff;
+  outline: none;
+  position: relative;
+  transition: 0.3s linear;
+}
