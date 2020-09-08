@@ -1,0 +1,29 @@
+.search  {
+    width: auto;    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+ .lokation {
+    width: auto;
+    justify-content:flex-start;
+ }
+
+
+ .city-search  {
+  width: 250px;
+  height: 42px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px solid #324b4e;
+  background: #f9f0da;
+  outline: none;
+  position: relative;
+  transition: 0.3s linear;
+}
+
+.star {
+    width: auto;
+    justify-content:flex-end;   
+}
