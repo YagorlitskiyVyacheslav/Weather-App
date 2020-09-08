@@ -1,4 +1,4 @@
-.search  {
+.container {
     width: auto;    
     display: flex;
     flex-direction: row;
@@ -16,11 +16,12 @@
   height: 42px;
   padding-left: 15px;
   border-radius: 42px;
-  border: 2px solid #324b4e;
+  border: 2px ;
   background: #f9f0da;
   outline: none;
   position: relative;
   transition: 0.3s linear;
+  
 }
 
 .star {
