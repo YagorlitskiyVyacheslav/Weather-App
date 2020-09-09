@@ -3,8 +3,7 @@
   border-radius: 25px;
 }
 .hourly-weather-wrapper {
-  display: flex;
-  justify-content: flex-end;
+  @include center-flex('end');
   margin-bottom: 18px;
 }
 .hourly-weather-close {
@@ -88,24 +87,36 @@
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: 50%;
-    background-color: hsla(0, 0%, 100%, 0.2);
+    background-color: $background-two-color;
     outline: none;
     margin-bottom: 25px;
   }
   .hourly-weather-next-btn-wrapper {
-    display: flex;
-    justify-content: flex-end;
+    @include center-flex('end');
   }
-  .hourly-weather-item__set-temperature {
-    font-size: 18px;
+  .hourly-weather-item {
+    &__set-time {
+      font-size: $title-text-size;
+      line-height: $line-height-standart;
+    }
+    &__set-temperature {
+      font-size: $title-text-two;
+      line-height: $line-height-standart;
+    }
   }
 }
 @media screen and (min-width: 1280px) {
   .hourly-weather-list {
-    display: flex;
-    justify-content: center;
+    @include center-flex('all');
   }
-  .hourly-weather-item__set-temperature {
-    font-size: 25px;
+  .hourly-weather-item {
+    &__set-temperature {
+      font-size: $title-text-three;
+      line-height: $line-height-standart;
+    }
+    &__set-time {
+      font-size: $title-text-size;
+      line-height: $line-height-standart;
+    }
   }
 }
