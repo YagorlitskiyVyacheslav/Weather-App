@@ -3,6 +3,7 @@ const paths = require('../utils/paths');
 
 module.exports = env => ({
   devtool: 'cheap-eval-source-map',
+
   output: {
     filename: '[name].js',
   },

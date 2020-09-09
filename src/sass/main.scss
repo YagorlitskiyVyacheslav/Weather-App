@@ -1,6 +1,7 @@
 @import "helpers/variables";
 @import "helpers/placeholder";
-@import "helpers/mixin.scss";
+@import "helpers/mixin";
 
 @import 'normalize';
 @import 'base';
+@import 'fiveDaysWeatherList';
