@@ -1,13 +1,13 @@
 @import "helpers/variables";
 @import "helpers/placeholder";
-@import "helpers/mixin.scss";
+@import "helpers/mixin";
 
 @import 'normalize';
 @import 'base';
 
 
+
 // COMPONENTS
-
+@import 'fiveDaysWeatherList';
 @import 'components/weather-today-container';
-
 @import 'components/quote';

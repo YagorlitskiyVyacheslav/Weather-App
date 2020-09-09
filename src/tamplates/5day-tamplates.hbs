@@ -1,0 +1,35 @@
+<h2 class="fiveDaysCityTitle">{{city.name}},{{city.country}}</h2>
+<ul class="fiveDaysCityWeatherList">
+    {{#each this}}
+    <li class="fiveDaysCityWeatherList__item">
+
+        <p class="fiveDaysCityWeatherList__day">{{list.dt }}</p>
+        <p class="fiveDaysCityWeatherList__date">{{list.dt }}</p>
+        <div class="fiveDaysCityWeatherList__img">
+            <img src="http://openweathermap.org/img/wn/${{weather.icon}}@2x.png" alt="{{weather.description}}">
+        </div>
+        <div class="fiveDaysCityWeatherList__tempr">
+            <div class="fiveDaysCityWeatherList__tempr--min temperature ">
+                <h4 class="temperature __header">min</h4>
+                <span class="temperature __value">{{main.temp_min}}</span>
+            </div>
+            <div class="fiveDaysCityWeatherList__line"></div>
+            <div class="fiveDaysCityWeatherList__tempr--max temperature ">
+                <h4 class="temperature __header">max</h4>
+                <span class="temperature __value">{{main.temp_max}}</span>
+            </div>
+
+        </div>
+        <button class="weatherList__item--btn">more info</button>
+    </li>
+    {{/each}}
+</ul>
+<div class="fiveDaysCitySliderBtn">
+    <button class="fiveDaysCitySliderBtn__right">&#60;
+    </button>
+    <button class="fiveDaysCitySliderBtn__left">&#62;
+    </button>
+</div>
+<div class="fiveDaysCityWeather__hourly">
+    <!-- тут вставляем шаблон для погоды почасово (Андрей) -->
+</div>
