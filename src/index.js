@@ -13,3 +13,10 @@ function onBtnClick(e){
 event.preventDefault();
 console.log(event.target.value)
 }
+
+import fetchWeater from './js/fetch-weater';
+import fetchImage from './js/fetch-bg-image';
+import refs from './js/refs';
+
+
+
