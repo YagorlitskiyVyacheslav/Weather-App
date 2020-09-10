@@ -1,0 +1,33 @@
+<h2 class="fiveDaysCityTitle">{{city.name}},{{city.country}}</h2>
+<ul class="fiveDaysCityWeatherList">
+    {{#each this}}
+    <li class="fiveDaysCityWeatherList__item">
+        <p class="fiveDaysCityWeatherList__day">{{day}}</p>
+        <p class="fiveDaysCityWeatherList__date">{{date}} {{month}}</p>
+        <div class="fiveDaysCityWeatherList__img">
+            <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="icon">
+        </div>
+        <div class="fiveDaysCityWeatherList__tempr">
+            <div class="fiveDaysCityWeatherList__tempr--min temperature ">
+                <h4 class="temperature__header">min</h4>
+                <span class="temperature__value">{{minTemperature}}&#176; </span>
+            </div>
+            <div class="fiveDaysCityWeatherList__tempr--max temperature">
+                <h4 class="temperature__header">max</h4>
+                <span class="temperature__value">{{maxTemperature}}&#176;</span>
+             </div>
+
+        </div>
+        <button class="weatherList__item--btn">more info</button>
+    </li>
+    {{/each}}
+</ul>
+<div class="fiveDaysCitySliderBtn">
+    <button class="fiveDaysCitySliderBtn__right">&#60;
+    </button>
+    <button class="fiveDaysCitySliderBtn__left">&#62;
+    </button>
+</div>
+<div class="fiveDaysCityWeather__hourly">
+    {{!--контейнер для шаблона почасово --}}
+ </div>
