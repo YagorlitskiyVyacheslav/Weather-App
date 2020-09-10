@@ -1,0 +1,36 @@
+@mixin list {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-between;
+}
+@mixin border {
+  background: rgba(16, 33, 54, 0.8);
+  box-shadow: 0px 8px 43px 0px;
+  border: transparent;
+  border-radius: 35px;
+}
+@mixin displayBlock {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+@mixin font-size1 {
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 18px;
+  }
+}
+@mixin font-size2 {
+  font-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 25px;
+  }
+}
