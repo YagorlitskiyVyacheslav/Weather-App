@@ -122,14 +122,14 @@ export default {
         return result;
       })
   },
-  searchWeaherByGeoOn5Days(lat, lon) {
+  searchWeaherByGeoOn5Days({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => data.name)
       .then(cityName => this.weatherFor5Days(cityName));
   },
-  searchWeaherByGeoOnCurrentDay(lat, lon) {
+  searchWeaherByGeoOnCurrentDay({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
