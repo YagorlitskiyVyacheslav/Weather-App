@@ -7,6 +7,6 @@ import quotes from './js/quote';
 import geolocation from './js/geolocation-rendering';
 
 navigator.geolocation.getCurrentPosition(
-  geolocation.onGetPositionSuccess,
-  geolocation.onGetPositionError
+  geolocation.onGetPositionSuccessCurrentDay,
+  geolocation.onGetPositionErrorCurrentDay
 );
