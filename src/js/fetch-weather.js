@@ -73,6 +73,9 @@ export default {
             const time = element.dt_txt.split(' ')[1]
             element.time = `${time.split(':')[0]}:${time.split(':')[1]}`;
             element.icon = element.weather[0].icon;
+            element.main.temp_min = Math.round(element.main.temp_min);
+            element.main.temp_max = Math.round(element.main.temp_max);
+            element.main.temp = Math.round(element.main.temp);
             delete element.clouds;
             delete element.pop;
             delete element.sys;
@@ -92,8 +95,8 @@ export default {
           result[i].date = dateMonth;
           result[i].month = month;
           result[i].icon = result[i].forecast[0].icon;
-          result[i].minTemperature = min;
-          result[i].maxTemperature = max;
+          result[i].minTemperature = Math.round(min);
+          result[i].maxTemperature = Math.round(max);
         });
         result.length = 5;
         return result;
