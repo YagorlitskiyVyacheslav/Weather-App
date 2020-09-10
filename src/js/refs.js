@@ -1,5 +1,6 @@
 export default {
     searchForm: document.getElementById('search-form'),
+    button: document.querySelector('.weather-5days'),
     containerWeatherToday: document.querySelector('.weather-today'),
     currentWeatherIcon: document.querySelector('.weather-today-icon'),
     cityName: document.querySelector('.current-name-city'),

@@ -9,6 +9,6 @@ import markUpFiveDays from './js/markUpFiveDay';
 
 
 navigator.geolocation.getCurrentPosition(
-  geolocation.onGetPositionSuccess,
-  geolocation.onGetPositionError
+  geolocation.onGetPositionSuccessCurrentDay,
+  geolocation.onGetPositionErrorCurrentDay
 );
