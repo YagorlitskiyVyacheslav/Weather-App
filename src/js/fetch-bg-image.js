@@ -1,27 +1,5 @@
 import refs from './refs';
 
-
-function onBackgroundPhoto(event) {
-    event.preventDefault()
-
-    if (inputRef.value.length !== 0) {
-
-        fetchImage.fetchImage(inputRef.value).then(data => {
-            if (data.largeImg !== undefined) {
-                backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-            } else {
-                console.log('alert');
-                //TODO: alert що немає такого міста 
-            }
-        });
-
-    } else {
-        console.log('alert');
-        //TODO: alert що нічого не ввели в input 
-    }
-
-}
-
 export default {
     apiKey: '17953661-fbb86eb9264530d2720389de2',
     baseUrl: `https://pixabay.com/api/`,
@@ -37,4 +15,3 @@ export default {
             .catch(err => err)
     }
 }
-
