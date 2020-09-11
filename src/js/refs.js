@@ -1,6 +1,6 @@
 export default {
-    searchForm: document.getElementById('search-form'),
-    button: document.querySelector('.weather-5days'),
+    searchForm: document.querySelector('.search-form'),
+    searchFormInput: document.querySelector('.search-form__input'),
     containerWeatherToday: document.querySelector('.weather-today'),
     currentWeatherIcon: document.querySelector('.weather-today-icon'),
     cityName: document.querySelector('.current-name-city'),
@@ -10,5 +10,7 @@ export default {
     weatherContainer: document.querySelector('.weatherContainer'),
     onClickBtnOneDay:document.querySelector('.weather-one-day'),
     onClickBtnFiveDay:document.querySelector('.weather-5days'),
-
+    preloader: document.querySelector('.preloader-con'),
+    sunrise: document.querySelector('.sunrise__time'),
+    sunset: document.querySelector('.sunset__time'),
 }

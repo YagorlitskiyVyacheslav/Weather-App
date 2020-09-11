@@ -7,6 +7,8 @@ const renderingCurrentWeather = (data) => {
  refs.tempToday.innerHTML = `${data.currentTemp}`;
  refs.tempTodayMin.innerHTML = `${data.tempMin}`;
  refs.tempTodayMax.innerHTML = `${data.tempMax}`;
+ refs.sunrise.innerHTML = `${data.sunrise}`;
+ refs.sunset.innerHTML = `${data.sunset}`
 }
 export default {
     onGetPositionSuccessCurrentDay(location) {
