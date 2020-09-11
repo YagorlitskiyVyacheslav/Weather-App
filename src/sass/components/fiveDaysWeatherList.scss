@@ -15,7 +15,9 @@ img {
   height: 100%;
 }
 .weatherContainer {
-  @include displayBlock;
+    display: none;
+    margin: 0 auto;
+    text-align: center;
   line-height: 1.2;
   @media screen and (max-width: 767px) {
     width: 280px;

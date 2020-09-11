@@ -108,28 +108,26 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         const result = {};
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
         result.sunrise = `${new Date(data.sys.sunrise*1000).getHours()}:${new Date(data.sys.sunrise*1000).getMinutes()}`;
         result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
-        result.currentTemp = data.main.temp;
-        result.tempMin = data.main.temp_min;
-        result.tempMax = data.main.temp_max;
-        console.log(result)
+        result.currentTemp = Math.round(data.main.temp);
+        result.tempMin = Math.round(data.main.temp_min);
+        result.tempMax = Math.round(data.main.temp_max);
         return result;
       })
   },
-  searchWeaherByGeoOn5Days(lat, lon) {
+  searchWeaherByGeoOn5Days({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => data.name)
       .then(cityName => this.weatherFor5Days(cityName));
   },
-  searchWeaherByGeoOnCurrentDay(lat, lon) {
+  searchWeaherByGeoOnCurrentDay({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())

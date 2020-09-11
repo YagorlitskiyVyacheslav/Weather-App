@@ -5,7 +5,11 @@ import fetchImage from './js/fetch-bg-image';
 import refs from './js/refs';
 import quotes from './js/quote';
 import  './js/preloader';
+import geolocation from './js/geolocation-rendering';
+import markUpFiveDays from './js/markUpFiveDay';
 
 
-fetchWeather.weatherFor5Days('london').then(data => console.log(data));
-
+navigator.geolocation.getCurrentPosition(
+  geolocation.onGetPositionSuccessCurrentDay,
+  geolocation.onGetPositionErrorCurrentDay
+);
