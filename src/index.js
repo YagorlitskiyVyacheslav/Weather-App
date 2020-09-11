@@ -19,7 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  preloader();
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     renderingCurrentWeather(data);
   });
+  refs.favoriteCityStar.addEventListener('click', () => {
+    localStorage.setItem('town', [`${refs.searchFormInput.value}`]);
+    refs.favoriteCityList.insertAdjacentHTML('beforeend', `<li class="search-form__favorite-item">${refs.searchFormInput.value}</li>`);
+    if (localStorage.getItem('town').indexOf(`${refs.searchFormInput.value}`) != -1) {
+      return;
+    }
+  })
 })
+

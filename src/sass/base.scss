@@ -1,18 +1,18 @@
 html {
   box-sizing: border-box;
-  // height: 100%;
+  background-color: lightblue;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  // height: 100%;
-  
 }
 .container {
   width: 280px;
