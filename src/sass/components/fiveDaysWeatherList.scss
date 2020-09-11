@@ -85,6 +85,7 @@ img {
     &:last-child {
       margin-right: 0;
     }
+    
   }
   &__date {
     display: block;
@@ -132,7 +133,9 @@ img {
       }
     }
   }
-  &__btn {
+  
+}
+.weatherList__item--btn{
     color: gray;
     line-height: 1.6px;
     border: none;
@@ -143,9 +146,7 @@ img {
     &:active{
       outline: none;
     }
-  }
-}
-
+};
 .temperature {
   &__header {
     padding:0 2px;
