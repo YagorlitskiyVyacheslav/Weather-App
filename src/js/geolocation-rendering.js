@@ -1,5 +1,6 @@
 import fetchWeather from './fetch-weather';
 import refs from './refs';
+import fetchImage from './fetch-bg-image'
 
 const renderingCurrentWeather = (data) => {
  refs.cityName.innerHTML = `${data.name}, ${data.country}`;
@@ -16,8 +17,10 @@ export default {
         lat: location.coords.latitude,
         lon: location.coords.longitude,
       };
+      
       fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => {
         renderingCurrentWeather(data);
+        console.log(data.name)
       })
     },
     onGetPositionErrorCurrentDay(error) {
@@ -27,6 +30,9 @@ export default {
         })
       };
       error.defaultCity();
+      fetchImage.fetchImage('Kyiv').then(data => {
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      });
     }
 }
 

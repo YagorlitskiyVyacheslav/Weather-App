@@ -108,8 +108,6 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        console.log(new Date())
         const result = {};
         result.icon = data.weather[0].icon;
         result.name = data.name;
@@ -120,7 +118,9 @@ export default {
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);
         return result;
-      })
+      }).catch(err => {
+        console.log(err)
+      });
   },
   searchWeaherByGeoOn5Days({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
