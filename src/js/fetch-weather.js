@@ -108,11 +108,13 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
+        console.log(new Date())
         const result = {};
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
-        result.sunrise = `${new Date(data.sys.sunrise*1000).getHours()}:${new Date(data.sys.sunrise*1000).getMinutes()}`;
+        result.sunrise = `${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getHours()}:${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getMinutes()}`;
         result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
         result.currentTemp = Math.round(data.main.temp);
         result.tempMin = Math.round(data.main.temp_min);

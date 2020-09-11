@@ -8,8 +8,16 @@
   <title>Weather App</title>
 </head>
 
-<body>
-  <div class="container">
+<body class="background-image">
+  <div class="preloader-con">
+    <div class="preloader">
+      <div class="dash uno"></div>
+      <div class="dash dos"></div>
+      <div class="dash tres"></div>
+      <div class="dash cuatro"></div>
+    </div>
+  </div>
+  <section class="container">
     <div class="form-container">
       <form class="search-form">
         <svg class="search-form__svg" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -18,14 +26,16 @@
             d="M20.94 11c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
         </svg>
         <input class="search-form__input" name="query" type="text" placeholder="Enter the City" />
-        <button class="search-form__favorite-city">
+        <div class="search-form__favorite-city">
           <svg class="search-form__star" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path
               d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
             <path d="M0 0h24v24H0z" fill="none" />
           </svg>
-        </button>
+        </div>
       </form>
+      <ul class="search-form__favorite-list">
+      </ul>
     </div>
     <div class="weather-today-container">
       <div class="weather-today">
@@ -88,13 +98,11 @@
         <p class="quote__text"></p>
         <p class="quote__author"></p>
       </blockquote>
-      <div class="weatherContainer">  
+    </div>
+    <div class="weatherContainer">
       <!-- for fiveDay-container-display-none -->
     </div>
-    </div>
-  </body>
-</html>
-
-  </div>
+  </section>
 </body>
+
 </html>
