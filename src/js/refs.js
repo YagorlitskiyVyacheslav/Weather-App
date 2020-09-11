@@ -1,3 +1,3 @@
 export default {
-    searchForm: document.getElementById('search-form'),
+    searchForm: document.querySelector('.search-form'),
 }
