@@ -1,6 +1,8 @@
 export default {
     searchForm: document.querySelector('.search-form'),
     searchFormInput: document.querySelector('.search-form__input'),
+    favoriteCityStar: document.querySelector('.search-form__favorite-city'),
+    favoriteCityList: document.querySelector('.search-form__favorite-list'),
     containerWeatherToday: document.querySelector('.weather-today'),
     currentWeatherIcon: document.querySelector('.weather-today-icon'),
     cityName: document.querySelector('.current-name-city'),
@@ -14,4 +16,8 @@ export default {
     sunrise: document.querySelector('.sunrise__time'),
     sunset: document.querySelector('.sunset__time'),
     backgroundRef: document.querySelector('.background-image'),
+    timerContainer: document.querySelector('.timer-date'),
+    quoteText:document.querySelector('.quote__text'),
+    quoteAuthor:document.querySelector('.quote__author'),
+    blickQuote:document.querySelector('.quote__block')
 }

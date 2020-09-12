@@ -20,23 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  preloader();
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     renderingCurrentWeather(data);
   });
-
-  if (refs.searchFormInput.value.length !== 0) {
-
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if (data.largeImg !== undefined) {
-        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-      } else {
-        console.log('alert');
-        //TODO: alert що немає такого міста 
-      }
-    });
-
-  } else {
-    console.log('alert');
-    //TODO: alert що нічого не ввели в input 
-  }
+  refs.favoriteCityStar.addEventListener('click', () => {
+    localStorage.setItem('town', [`${refs.searchFormInput.value}`]);
+    refs.favoriteCityList.insertAdjacentHTML('beforeend', `<li class="search-form__favorite-item">${refs.searchFormInput.value}</li>`);
+    if (localStorage.getItem('town').indexOf(`${refs.searchFormInput.value}`) != -1) {
+      return;
+    }
+  })
+  fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+  });
 })

@@ -6,6 +6,6 @@ export default () => {
 
  setTimeout(() => {
    refs.preloader.classList.remove('display-block')
- }, 1000)
+ }, 2000)
 
 }
