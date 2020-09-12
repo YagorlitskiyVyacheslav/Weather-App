@@ -55,6 +55,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         const result = [];
+        let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
           let dayOfTheWeek = new Date(day[0].dt * 1000).getDay();
@@ -91,10 +92,16 @@ export default {
           result.push({
             forecast: [...day]
           });
+          result[i].id = id;
+          id ++;
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
-          result[i].icon = result[i].forecast[0].icon;
+          if(result[i] === result[0]) {
+            result[i].icon = result[i].forecast[0].icon;
+          } else {
+            result[i].icon = result[i].forecast[5].icon;
+          }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
         });
@@ -108,19 +115,19 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         const result = {};
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
-        result.sunrise = `${new Date(data.sys.sunrise*1000).getHours()}:${new Date(data.sys.sunrise*1000).getMinutes()}`;
+        result.sunrise = `${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getHours()}:${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getMinutes()}`;
         result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
-        result.currentTemp = data.main.temp;
-        result.tempMin = data.main.temp_min;
-        result.tempMax = data.main.temp_max;
-        console.log(result)
+        result.currentTemp = Math.round(data.main.temp);
+        result.tempMin = Math.round(data.main.temp_min);
+        result.tempMax = Math.round(data.main.temp_max);
         return result;
-      })
+      }).catch(err => {
+        console.log(err)
+      });
   },
   searchWeaherByGeoOn5Days({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;

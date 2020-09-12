@@ -11,11 +11,7 @@
   border: transparent;
   border-radius: 35px;
 }
-@mixin displayBlock {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-}
+
 @mixin font-size1 {
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -34,3 +30,38 @@
     font-size: 25px;
   }
 }
+
+@mixin center-flex($type: 'all') {
+  display: flex;
+
+  @if $type== 'all' {
+    justify-content: center;
+    align-items: center;
+  } @else if $type== 'hor' {
+    justify-content: center;
+  } @else if $type== 'ver' {
+    align-items: center;
+  } @else if $type== 'end' {
+    justify-content: flex-end;
+  } @else if $type== 'col' {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@mixin flex-wrap($type: 'all') {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin space-between($type: 'all') {
+  display: flex;
+  justify-content: space-between;
+
+  @if $type== 'ver' {
+    align-items: center;
+  }
+}
+
+@mixin inline-block($type: 'all') {
+  display: inline-block;
+} 

@@ -1,0 +1,29 @@
+<div class="container">
+      <div class="gallery-visually">
+        <div class="hourly-weather-wrapper">
+          <button class="hourly-weather-close">&#10006;</button>
+        </div>
+        <ul class="hourly-weather-list">
+              {{#each forecast}}
+          <li class="hourly-weather-item" id="Clear">
+            <p class="hourly-weather-item__set-time">{{time}}</p>
+            <img class="hourly-weather-item__set-img" src="http://openweathermap.org/img/w/{{icon}}.png" alt="icon" />
+            <p class="hourly-weather-item__set-temperature">{{main.temp}}&#176;</p>
+            <div class="hourly-weather-item__weather-details">
+              <p class="hourly-weather-item__pressure-value">{{main.pressure}}mm</p>
+              <p class="hourly-weather-item__humidity-value">{{main.humidity}}%</p>
+              <p class="hourly-weather-item__wind-value">{{wind.speed}}m/s</p>
+            </div>
+          </li>
+           {{/each}}
+        </ul>
+        <div class="hourly-weather-btns">
+          <button class="hourly-weather-prev-btn" style="display: none">
+            &lt;
+          </button>
+          <div class="hourly-weather-next-btn-wrapper">
+            <button class="hourly-weather-next-btn">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>

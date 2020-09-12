@@ -1,0 +1,36 @@
+
+<h2 class="fiveDaysCityTitle"></h2>
+<div class="weatherContainer__wrapper">
+<ul class="fiveDaysCityWeatherList">
+    {{#each this}}
+    <li class="fiveDaysCityWeatherList__item" data-id="{{id}}">
+        <p class="fiveDaysCityWeatherList__day" data-id="{{id}}">{{day}}</p>
+        <p class="fiveDaysCityWeatherList__date" data-id="{{id}}">{{date}} {{month}}</p>
+        <div class="fiveDaysCityWeatherList__img" data-id="{{id}}">
+            <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="icon" data-id="{{id}}">
+        </div>
+        <div class="fiveDaysCityWeatherList__tempr" data-id="{{id}}">
+            <div class="fiveDaysCityWeatherList__tempr--min temperature" data-id="{{id}}">
+                <h4 class="temperature__header" data-id="{{id}}">min</h4>
+                <span class="temperature__value" data-id="{{id}}">{{minTemperature}}&#176; </span>
+            </div>
+            <div class="fiveDaysCityWeatherList__tempr--max temperature" data-id="{{id}}">
+                <h4 class="temperature__header" data-id="{{id}}">max</h4>
+                <span class="temperature__value" data-id="{{id}}">{{maxTemperature}}&#176;</span>
+             </div>
+
+        </div>
+        <button class="weatherList__item--btn" data-id="{{id}}">more info</button>
+    </li>
+    {{/each}}
+</ul>
+<div class="fiveDaysCitySliderBtn">
+    <button class="fiveDaysCitySliderBtn__right">&#60;
+    </button>
+    <button class="fiveDaysCitySliderBtn__left">&#62;
+    </button>
+  
+</div>
+  <div class="fiveDaysCityWeather__hourly">
+ </div>
+ </div>

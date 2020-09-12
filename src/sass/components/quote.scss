@@ -5,6 +5,7 @@
 };
 
 .quote__block {
+    display: block;
     text-align: right;
     width: 204px;
     margin-left: auto;
@@ -18,13 +19,12 @@
     background-repeat: no-repeat;
     background-position: 95% 15%;
 
-    @media (min-width: 1280px) {
-        margin-right: 0;
-    }
-
     @media (min-width: 768px) {
         width: 372px;
         margin-right: 59px;
+    }
+    @media (min-width: 1280px) {
+      margin-right: 0;
     }
 };
 
