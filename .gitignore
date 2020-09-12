@@ -1,6 +1,10 @@
 # production
 /build
 
+
+package.json
+package-lock.json
+
 # Logs
 logs
 *.log

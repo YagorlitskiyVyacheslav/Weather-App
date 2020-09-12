@@ -4,6 +4,7 @@ import refs from './js/refs';
 import fetchWeather from './js/fetch-weather';
 import fetchImage from './js/fetch-bg-image';
 import quotes from './js/quote';
+import timerDate from './js/timer-date';
 import preloader from './js/preloader'
 import geolocation from './js/geolocation-rendering';
 import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
