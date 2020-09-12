@@ -8,6 +8,8 @@ import preloader from './js/preloader'
 import geolocation from './js/geolocation-rendering';
 import markUpFiveDays from './js/markUpFiveDay';
 import renderingCurrentWeather from './js/renderingCurrentWeather';
+import { error, Stack } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
 
 document.addEventListener('DOMContentLoaded', preloader())
 
@@ -21,6 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
+
+  if (refs.searchFormInput.value.length === 0) {
+    error({
+      text: "Please write search city!",
+    });
+  } else {
+    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      if (data.largeImg === undefined) {
+        error({
+          text: "Can't show such city!",
+        });
+      } else {
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      }
+    });
+  }
+
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     renderingCurrentWeather(data);
   });
@@ -31,7 +50,5 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
-  fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-  });
+
 })
