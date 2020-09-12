@@ -29,7 +29,6 @@ const onBtnOneDayClick = function () {
 
 const onBtnFiveDayClick = function () {
   if (this.isActiveBtnFiveDay) {
-    console.log('in5', this.isActiveBtnFiveDay);
     return;
   }
   this.isActiveBtnFiveDay = true;
@@ -43,17 +42,23 @@ const onBtnFiveDayClick = function () {
   refs.blickQuote.style.display = 'none';
   this.isActiveBtnOneDay = true;
   fetchWeater.weatherFor5Days(refs.searchFormInput.value).then(data => {
-    console.log(data);
+    console.log("11",data);
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
     const onClickMoreInfo = document.querySelector(
-      '.fiveDaysCityWeatherList__item',
+      '.fiveDaysCityWeatherList',
     );
-
+      let isClickMoreInfoActive = false;
     onClickMoreInfo.addEventListener(`click`, () => {
+      if (this.isClickMoreInfoActive) {
+        return;
+      }
+      console.log("22",data);
+      this.isClickMoreInfoActive = true;
       const onClickMoreInfo = document.querySelector(
         '.fiveDaysCityWeatherList__item',
       );
+
       onClickMoreInfo.classList.add('activContainer');
       const contWeatherHourl = document.querySelector(
         '.fiveDaysCityWeather__hourly',
@@ -62,8 +67,10 @@ const onBtnFiveDayClick = function () {
       contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
       const hourlyWeatherContainerClose = document.querySelector(
         '.hourly-weather-close',
+
       );
       hourlyWeatherContainerClose.addEventListener(`click`, () => {
+        this.isClickMoreInfoActive = false;
         contWeatherHourl.innerHTML = '';
       });
       return markUpHourly;
