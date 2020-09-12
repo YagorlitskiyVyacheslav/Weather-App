@@ -16,4 +16,8 @@ export default {
     sunrise: document.querySelector('.sunrise__time'),
     sunset: document.querySelector('.sunset__time'),
     backgroundRef: document.querySelector('.background-image'),
+    timerContainer: document.querySelector('.timer-date'),
+    quoteText:document.querySelector('.quote__text'),
+    quoteAuthor:document.querySelector('.quote__author'),
+    blickQuote:document.querySelector('.quote__block')
 }

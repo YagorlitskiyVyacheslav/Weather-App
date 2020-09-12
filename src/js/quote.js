@@ -1,5 +1,4 @@
-    const quoteText = document.querySelector('.quote__text');
-    const quoteAuthor = document.querySelector('.quote__author');
+import refs from './refs';
 
 const quoteArr = [
   {
@@ -40,8 +39,8 @@ function randomQuote(quoteArr) {
     const author = quoteArr[randomNumber].author;
     const text = quoteArr[randomNumber].text;
 
-    quoteAuthor.textContent = author;
-    quoteText.textContent = text; 
+    refs.quoteAuthor.textContent = author;
+    refs.quoteText.textContent = text; 
 }
 
 randomQuote(quoteArr)

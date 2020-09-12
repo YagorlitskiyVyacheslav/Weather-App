@@ -1,7 +1,7 @@
-.gallery-visually {
-    background-color: #102136;
-    border-radius: 25px;
-  }
+// .gallery-visually {
+//     background-color: #102136;
+//     border-radius: 25px;
+//   }
   .hourly-weather-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -31,6 +31,7 @@
     margin: 0px;
     padding-bottom: 18px;
     padding-left: 15px;
+    overflow: hidden;
   }
   .hourly-weather-btns {
     //   display: flex;
