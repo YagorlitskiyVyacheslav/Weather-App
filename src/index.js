@@ -6,17 +6,19 @@ import fetchImage from './js/fetch-bg-image';
 import quotes from './js/quote';
 import preloader from './js/preloader'
 import geolocation from './js/geolocation-rendering';
-import markUpFiveDays from './js/markUpFiveDay';
+import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
 import renderingCurrentWeather from './js/renderingCurrentWeather';
+
 
 document.addEventListener('DOMContentLoaded', preloader())
 
 document.addEventListener('DOMContentLoaded', () => {
   navigator.geolocation.getCurrentPosition(
-    geolocation.onGetPositionSuccessCurrentDay,
-    geolocation.onGetPositionErrorCurrentDay
+    geolocation.onGetPositionSuccess,
+    geolocation.onGetPositionError
   );
-})
+});
+refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -31,6 +33,9 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
+  refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+    onBtnFiveDayClick(refs.searchFormInput.value)
+  });
   fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
       refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
   });

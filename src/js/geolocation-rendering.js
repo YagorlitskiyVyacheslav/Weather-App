@@ -1,6 +1,7 @@
 import fetchWeather from './fetch-weather';
 import refs from './refs';
-import fetchImage from './fetch-bg-image'
+import fetchImage from './fetch-bg-image';
+import { onBtnOneDayClick, onBtnFiveDayClick } from './markUpFiveDay';
 
 const renderingCurrentWeather = (data) => {
  refs.cityName.innerHTML = `${data.name}, ${data.country}`;
@@ -12,21 +13,25 @@ const renderingCurrentWeather = (data) => {
  refs.sunset.innerHTML = `${data.sunset}`
 }
 export default {
-    onGetPositionSuccessCurrentDay(location) {
+    onGetPositionSuccess(location) {
       const coords = {
         lat: location.coords.latitude,
         lon: location.coords.longitude,
       };
-      
       fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => {
         renderingCurrentWeather(data);
-        console.log(data.name)
+        refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+          onBtnFiveDayClick(data.name)
+        });
       })
     },
-    onGetPositionErrorCurrentDay(error) {
+    onGetPositionError(error) {
       error.defaultCity = () => {
         fetchWeather.currentWeather('Kyiv').then(data => {
           renderingCurrentWeather(data);
+          refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+            onBtnFiveDayClick(data.name)
+          });
         })
       };
       error.defaultCity();
