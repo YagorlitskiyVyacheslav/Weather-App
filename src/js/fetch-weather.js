@@ -55,6 +55,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         const result = [];
+        let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
           let dayOfTheWeek = new Date(day[0].dt * 1000).getDay();
@@ -91,10 +92,16 @@ export default {
           result.push({
             forecast: [...day]
           });
+          result[i].id = id;
+          id ++;
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
-          result[i].icon = result[i].forecast[0].icon;
+          if(result[i] === result[0]) {
+            result[i].icon = result[i].forecast[0].icon;
+          } else {
+            result[i].icon = result[i].forecast[5].icon;
+          }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
         });

@@ -6,19 +6,21 @@ import fetchImage from './js/fetch-bg-image';
 import quotes from './js/quote';
 import preloader from './js/preloader'
 import geolocation from './js/geolocation-rendering';
-import markUpFiveDays from './js/markUpFiveDay';
+import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
 import renderingCurrentWeather from './js/renderingCurrentWeather';
 import { error, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
+
 
 document.addEventListener('DOMContentLoaded', preloader())
 
 document.addEventListener('DOMContentLoaded', () => {
   navigator.geolocation.getCurrentPosition(
-    geolocation.onGetPositionSuccessCurrentDay,
-    geolocation.onGetPositionErrorCurrentDay
+    geolocation.onGetPositionSuccess,
+    geolocation.onGetPositionError
   );
-})
+});
+refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -50,5 +52,4 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
-
 })

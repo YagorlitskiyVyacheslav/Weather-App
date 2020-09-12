@@ -4,16 +4,15 @@ import fiveDaysWeatherList from '../template/fiveDays-template.hbs';
 import hourlyWeatherList from '../template/hourlyDay-template.hbs';
 
 
-const switchBtn = {
-  isActiveBtnOneDay: true,
-  isActiveBtnFiveDay: false,
-};
+let isActiveBtnOneDay = true;
+let isActiveBtnFiveDay = false;
+
 
 const onBtnOneDayClick = function () {
-  if (!this.isActiveBtnOneDay) {
+  if (!isActiveBtnOneDay) {
     return;
   }
-  this.isActiveBtnOneDay = false;
+  isActiveBtnOneDay = false;
   refs.onClickBtnFiveDay.classList.remove('weather-button-active');
   refs.onClickBtnFiveDay.classList.add('weather-button-unactive');
   refs.onClickBtnOneDay.classList.remove('weather-button-unactive');
@@ -23,15 +22,15 @@ const onBtnOneDayClick = function () {
   refs.timerContainer.style.display = 'flex';
   refs.blickQuote.style.display = 'block';
   refs.weatherContainer.innerHTML = '';
-  this.isActiveBtnFiveDay = false;
+  isActiveBtnFiveDay = false;
   return;
 };
 
-const onBtnFiveDayClick = function () {
-  if (this.isActiveBtnFiveDay) {
+const onBtnFiveDayClick = function (cityName) {
+  if (isActiveBtnFiveDay) {
     return;
   }
-  this.isActiveBtnFiveDay = true;
+  isActiveBtnFiveDay = true;
   refs.onClickBtnFiveDay.classList.remove('weather-button-unactive');
   refs.onClickBtnFiveDay.classList.add('weather-button-active');
   refs.onClickBtnOneDay.classList.remove('weather-button-active');
@@ -40,51 +39,41 @@ const onBtnFiveDayClick = function () {
   refs.containerWeatherToday.style.display = 'none';
   refs.weatherContainer.style.display = 'block';
   refs.blickQuote.style.display = 'none';
-  this.isActiveBtnOneDay = true;
-  fetchWeater.weatherFor5Days(refs.searchFormInput.value).then(data => {
-    console.log("11",data);
+  isActiveBtnOneDay = true;
+  fetchWeater.weatherFor5Days(cityName).then(data => {
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
+    const cityTitle = document.querySelector('.fiveDaysCityTitle');
+    cityTitle.textContent = refs.cityName.textContent
+    refs.cityName
     const onClickMoreInfo = document.querySelector(
       '.fiveDaysCityWeatherList',
     );
-      let isClickMoreInfoActive = false;
-    onClickMoreInfo.addEventListener(`click`, () => {
-      if (this.isClickMoreInfoActive) {
-        return;
-      }
-      console.log("22",data);
-      this.isClickMoreInfoActive = true;
-      const onClickMoreInfo = document.querySelector(
-        '.fiveDaysCityWeatherList__item',
-      );
+    onClickMoreInfo.addEventListener(`click`, (e) => {
+      // const onClickMoreInfo = document.querySelector(
+      //   '.fiveDaysCityWeatherList__item',
+      // );
+        
+      // onClickMoreInfo.classList.add('activContainer');
+      //TODO Що по твоєму має добавляти activeContainer?
 
-      onClickMoreInfo.classList.add('activContainer');
       const contWeatherHourl = document.querySelector(
         '.fiveDaysCityWeather__hourly',
       );
-      const markUpHourly = hourlyWeatherList(data);
+      contWeatherHourl.innerHTML = '';
+      const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
       contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
       const hourlyWeatherContainerClose = document.querySelector(
         '.hourly-weather-close',
 
       );
       hourlyWeatherContainerClose.addEventListener(`click`, () => {
-        this.isClickMoreInfoActive = false;
         contWeatherHourl.innerHTML = '';
       });
-      return markUpHourly;
     });
-    return markUp;
   });
 };
-
-refs.onClickBtnOneDay.addEventListener(
-  `click`,
-  onBtnOneDayClick.bind(switchBtn),
-);
-
-refs.onClickBtnFiveDay.addEventListener(
-  `click`,
-  onBtnFiveDayClick.bind(switchBtn),
-);
+export {
+  onBtnOneDayClick,
+  onBtnFiveDayClick
+}
