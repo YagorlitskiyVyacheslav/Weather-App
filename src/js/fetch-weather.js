@@ -73,6 +73,7 @@ export default {
 
             const time = element.dt_txt.split(' ')[1]
             element.time = `${time.split(':')[0]}:${time.split(':')[1]}`;
+            
             element.icon = element.weather[0].icon;
             element.main.temp_min = Math.round(element.main.temp_min);
             element.main.temp_max = Math.round(element.main.temp_max);
@@ -97,10 +98,12 @@ export default {
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
+          result[i].icon = result[i].forecast[0].icon;
+          console.log(result[i] === result[0])
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
-            result[i].icon = result[i].forecast[5].icon;
+            result[i].icon = result[i].forecast[3].icon;
           }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
@@ -116,6 +119,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         const result = {};
+        result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
@@ -125,9 +129,7 @@ export default {
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);
         return result;
-      }).catch(err => {
-        console.log(err)
-      });
+      }).catch(err => err);
   },
   searchWeaherByGeoOn5Days({lat, lon}) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;

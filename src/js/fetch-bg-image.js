@@ -8,7 +8,6 @@ export default {
         return fetch(this.baseUrl + params)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 const result = { largeImg: data.hits[0].largeImageURL, smallImg: data.hits[0].webformatURL }
 
                 return result;

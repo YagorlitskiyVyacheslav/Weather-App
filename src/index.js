@@ -26,7 +26,6 @@ refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
-
   if (refs.searchFormInput.value.length === 0) {
     error({
       text: "Please write search city!",
@@ -42,7 +41,6 @@ refs.searchForm.addEventListener('submit', (e) => {
       }
     });
   }
-
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     renderingCurrentWeather(data);
   });
@@ -53,4 +51,10 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
+  refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+    onBtnFiveDayClick(refs.searchFormInput.value)
+  });
+  fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+  });
 })
