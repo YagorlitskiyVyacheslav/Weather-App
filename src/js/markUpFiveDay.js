@@ -44,8 +44,7 @@ const onBtnFiveDayClick = function (cityName) {
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
     const cityTitle = document.querySelector('.fiveDaysCityTitle');
-    cityTitle.textContent = refs.cityName.textContent
-    refs.cityName
+    cityTitle.textContent = refs.cityName.textContent;
     const onClickMoreInfo = document.querySelector(
       '.fiveDaysCityWeatherList',
     );
