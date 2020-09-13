@@ -26,22 +26,8 @@ refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
-  if (refs.searchFormInput.value.length === 0) {
-    error({
-      text: "Please write search city!",
-    });
-  } else {
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if (data.largeImg === undefined) {
-        error({
-          text: "Can't show such city!",
-        });
-      } else {
-        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-      }
-    });
-  }
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
+    if(data === null) return;
     renderingCurrentWeather(data);
   });
   refs.favoriteCityStar.addEventListener('click', () => {
@@ -55,6 +41,7 @@ refs.searchForm.addEventListener('submit', (e) => {
     onBtnFiveDayClick(refs.searchFormInput.value)
   });
   fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      if(data === null) return;
       refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
   });
 })

@@ -54,6 +54,7 @@ export default {
     return fetch(this.baseUrl + searchOptions)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         const result = [];
         let id = 0;
         data.list = SortArrayForDays(data);
@@ -118,6 +119,7 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
+        if(data.cod === '404') return null;
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
