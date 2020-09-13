@@ -101,7 +101,7 @@ export default {
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
-            result[i].icon = result[i].forecast[3].icon;
+            result[i].icon = result[i].forecast[4].icon;
           }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
