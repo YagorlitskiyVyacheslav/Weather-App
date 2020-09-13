@@ -54,7 +54,6 @@ export default {
     return fetch(this.baseUrl + searchOptions)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         const result = [];
         let id = 0;
         data.list = SortArrayForDays(data);
@@ -100,7 +99,6 @@ export default {
           result[i].date = dateMonth;
           result[i].month = month;
           result[i].icon = result[i].forecast[0].icon;
-          console.log(result[i] === result[0])
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {

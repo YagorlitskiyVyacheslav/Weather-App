@@ -12,32 +12,37 @@ const renderingCurrentWeather = (data) => {
  refs.sunrise.innerHTML = `${data.sunrise}`;
  refs.sunset.innerHTML = `${data.sunset}`
 }
-export default {
-    onGetPositionSuccess(location) {
-      const coords = {
-        lat: location.coords.latitude,
-        lon: location.coords.longitude,
-      };
-      fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => {
-        renderingCurrentWeather(data);
-        refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-          onBtnFiveDayClick(data.name)
-        });
-      })
-    },
-    onGetPositionError(error) {
-      error.defaultCity = () => {
-        fetchWeather.currentWeather('Kyiv').then(data => {
-          renderingCurrentWeather(data);
-          refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-            onBtnFiveDayClick(data.name)
-          });
-        })
-      };
-      error.defaultCity();
-      fetchImage.fetchImage('Kyiv').then(data => {
-        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+
+const onGetPositionSuccess = (location) => {
+  const coords = {
+    lat: location.coords.latitude,
+    lon: location.coords.longitude,
+  };
+  fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => {
+    renderingCurrentWeather(data);
+    refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+      onBtnFiveDayClick(data.name)
+    });
+  })
+};
+const onGetPositionError = (error) => {
+  error.defaultCity = () => {
+    fetchWeather.currentWeather('Kyiv').then(data => {
+      renderingCurrentWeather(data);
+      refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+        onBtnFiveDayClick(data.name);
       });
-    }
-}
+    })
+  };
+  error.defaultCity();
+  fetchImage.fetchImage('Kyiv').then(data => {
+    refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+  });
+};
+export default () => {
+  navigator.geolocation.getCurrentPosition(
+    onGetPositionSuccess,
+    onGetPositionError
+  );
+};
 

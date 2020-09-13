@@ -15,17 +15,17 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 document.addEventListener('DOMContentLoaded', preloader())
 
-document.addEventListener('DOMContentLoaded', () => {
-  navigator.geolocation.getCurrentPosition(
-    geolocation.onGetPositionSuccess,
-    geolocation.onGetPositionError
-  );
-});
+document.addEventListener('DOMContentLoaded', geolocation);
 refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
-
+refs.searchForm.addEventListener('submit', () => {
+})
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
+  onBtnOneDayClick();
+  refs.onClickBtnFiveDay.addEventListener(`click`, () => {
+    onBtnFiveDayClick(refs.searchFormInput.value);
+  });
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     if(data === null) return;
     renderingCurrentWeather(data);
@@ -37,9 +37,6 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
-  refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-    onBtnFiveDayClick(refs.searchFormInput.value)
-  });
   fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
       if(data === null) return;
       refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
