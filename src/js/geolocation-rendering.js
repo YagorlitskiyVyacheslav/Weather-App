@@ -18,21 +18,11 @@ const onGetPositionSuccess = (location) => {
     lat: location.coords.latitude,
     lon: location.coords.longitude,
   };
-  fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => {
-    renderingCurrentWeather(data);
-    refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-      onBtnFiveDayClick(data.name)
-    });
-  })
+  fetchWeather.searchWeaherByGeoOnCurrentDay(coords).then(data => renderingCurrentWeather(data))
 };
 const onGetPositionError = (error) => {
   error.defaultCity = () => {
-    fetchWeather.currentWeather('Kyiv').then(data => {
-      renderingCurrentWeather(data);
-      refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-        onBtnFiveDayClick(data.name);
-      });
-    })
+    fetchWeather.currentWeather('Kyiv').then(data => renderingCurrentWeather(data));
   };
   error.defaultCity();
   fetchImage.fetchImage('Kyiv').then(data => {

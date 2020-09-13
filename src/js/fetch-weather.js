@@ -98,7 +98,6 @@ export default {
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
-          result[i].icon = result[i].forecast[0].icon;
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
@@ -106,6 +105,7 @@ export default {
           }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
+          result[i].city = data.city.name;
         });
         result.length = 5;
         return result;

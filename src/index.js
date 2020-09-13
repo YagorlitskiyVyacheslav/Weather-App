@@ -14,18 +14,18 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 
 document.addEventListener('DOMContentLoaded', preloader())
-
-document.addEventListener('DOMContentLoaded', geolocation);
+document.addEventListener('DOMContentLoaded', geolocation.getWeather);
 refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
-refs.searchForm.addEventListener('submit', () => {
-})
+refs.onClickBtnFiveDay.addEventListener('click', () => {
+  const cityName = refs.cityName.textContent.split(',')[0];
+  fetchWeather.weatherFor5Days(cityName).then(data => {
+    onBtnFiveDayClick(data);
+  })
+});
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
   onBtnOneDayClick();
-  refs.onClickBtnFiveDay.addEventListener(`click`, () => {
-    onBtnFiveDayClick(refs.searchFormInput.value);
-  });
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
     if(data === null) return;
     renderingCurrentWeather(data);
