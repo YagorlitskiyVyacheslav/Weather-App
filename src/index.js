@@ -32,7 +32,10 @@ refs.searchForm.addEventListener('submit', (e) => {
     formStar.removeClassFillYellow();
     formStar.addClassFillYellow();
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-      if (data === null) return;
+      if (data === null) {
+        refs.searchFormInput.value = '';
+        return;
+      }
       renderingCurrentWeather(data);
     });
     localStorageInput();
