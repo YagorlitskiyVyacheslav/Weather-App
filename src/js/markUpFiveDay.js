@@ -48,13 +48,7 @@ const onBtnFiveDayClick = function (data) {
       '.fiveDaysCityWeatherList',
     );
     onClickMoreInfo.addEventListener(`click`, (e) => {
-      // const onClickMoreInfo = document.querySelector(
-      //   '.fiveDaysCityWeatherList__item',
-      // );
-        
-      // onClickMoreInfo.classList.add('activContainer');
-      //TODO Що по твоєму має добавляти activeContainer?
-
+      
       const contWeatherHourl = document.querySelector(
         '.fiveDaysCityWeather__hourly',
       );
