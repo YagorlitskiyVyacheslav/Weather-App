@@ -1,5 +1,6 @@
 import refs from './refs';
 import fetchWeather from './fetch-weather';
+import fetchImage from './fetch-bg-image';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import preloader from './preloader';
 
