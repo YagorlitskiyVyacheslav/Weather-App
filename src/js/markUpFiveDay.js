@@ -26,7 +26,7 @@ const onBtnOneDayClick = function () {
   return;
 };
 
-const onBtnFiveDayClick = function (cityName) {
+const onBtnFiveDayClick = function (data) {
   if (isActiveBtnFiveDay) {
     return;
   }
@@ -40,12 +40,10 @@ const onBtnFiveDayClick = function (cityName) {
   refs.weatherContainer.style.display = 'block';
   refs.blickQuote.style.display = 'none';
   isActiveBtnOneDay = true;
-  fetchWeater.weatherFor5Days(cityName).then(data => {
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
     const cityTitle = document.querySelector('.fiveDaysCityTitle');
-    cityTitle.textContent = refs.cityName.textContent
-    refs.cityName
+    cityTitle.textContent = refs.cityName.textContent;
     const onClickMoreInfo = document.querySelector(
       '.fiveDaysCityWeatherList',
     );
@@ -70,7 +68,6 @@ const onBtnFiveDayClick = function (cityName) {
       hourlyWeatherContainerClose.addEventListener(`click`, () => {
         contWeatherHourl.innerHTML = '';
       });
-    });
   });
 };
 export {

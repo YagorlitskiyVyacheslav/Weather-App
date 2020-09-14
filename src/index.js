@@ -4,6 +4,7 @@ import refs from './js/refs';
 import fetchWeather from './js/fetch-weather';
 import fetchImage from './js/fetch-bg-image';
 import quotes from './js/quote';
+import timerDate from './js/timer-date';
 import preloader from './js/preloader'
 import geolocation from './js/geolocation-rendering';
 import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
@@ -13,36 +14,20 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 
 document.addEventListener('DOMContentLoaded', preloader())
-
-document.addEventListener('DOMContentLoaded', () => {
-  navigator.geolocation.getCurrentPosition(
-    geolocation.onGetPositionSuccess,
-    geolocation.onGetPositionError
-  );
-});
+document.addEventListener('DOMContentLoaded', geolocation.getWeather);
 refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
-
+refs.onClickBtnFiveDay.addEventListener('click', () => {
+  const cityName = refs.cityName.textContent.split(',')[0];
+  fetchWeather.weatherFor5Days(cityName).then(data => {
+    onBtnFiveDayClick(data);
+  })
+});
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader();
-
-  if (refs.searchFormInput.value.length === 0) {
-    error({
-      text: "Please write search city!",
-    });
-  } else {
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if (data.largeImg === undefined) {
-        error({
-          text: "Can't show such city!",
-        });
-      } else {
-        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-      }
-    });
-  }
-
+  onBtnOneDayClick();
   fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
+    if(data === null) return;
     renderingCurrentWeather(data);
   });
   refs.favoriteCityStar.addEventListener('click', () => {
@@ -52,4 +37,8 @@ refs.searchForm.addEventListener('submit', (e) => {
       return;
     }
   })
+  fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      if(data === null) return;
+      refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+  });
 })
