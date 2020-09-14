@@ -7,6 +7,9 @@
   display: none;
 
 }
+.preloader-con-search {
+  background-color: rgba(128, 128, 128, 0.5);
+}
 .display-block {
   display: block;
 }
@@ -23,7 +26,8 @@
   width: 35px;
   height: 15px;
   border-radius: 8px;
-  background: orange;
+  background: #102136;
+  opacity: 0.8;
   box-shadow: 0 0 10px 0 #FECDFF;
 }
 

@@ -6,13 +6,28 @@ import preloader from './preloader';
 let cityArray = localStorage.getItem('town') ? JSON.parse(localStorage.getItem('town')) : [];
 localStorage.setItem('town', JSON.stringify(cityArray))
 const data = JSON.parse(localStorage.getItem('town'));
-const createCityItem = (item) => {
+
+const createCityItem = (item, index) => {
   refs.favoriteCityList.insertAdjacentHTML('beforeend', `<li class="favorite-list__item">
           <p class="favorite-list__item-link">${item}</p>
           <button class="favorite-list__item-close">&#10006;</button>
         </li>`);
+        
 };
-
+const removeFavoriteItem = (index) => {
+    const favoriteListItem = document.querySelectorAll('.favorite-list__item');
+    favoriteListItem[index].addEventListener('click', (e) => {
+      if (e.target.localName === 'button') {
+        refs.favoriteCityList.removeChild(favoriteListItem[index]);
+        cityArray.forEach((item, i) => {
+          if (item === favoriteListItem[index].childNodes[1].textContent) {
+            cityArray.splice(i, 1);
+            localStorage.setItem('town', JSON.stringify(cityArray))
+          }
+        })
+      }
+    })
+}
 refs.favoriteCityList.addEventListener('click', (e) => {
   if (e.target.classList.contains('favorite-list__item-link')) {
       preloader();
@@ -23,20 +38,23 @@ refs.favoriteCityList.addEventListener('click', (e) => {
       });
   }
 })
-data.forEach(item => {
+data.forEach((item, index) => {
     createCityItem(item);
+    removeFavoriteItem(index)
 });
 
 const setInputValue = (e) => {
     e.preventDefault();
-    if(cityArray.indexOf(refs.searchFormInput.value) != -1) {
+    if(cityArray.indexOf(refs.searchFormInput.value.toLowerCase()) != -1) {
         return;
     }
-    cityArray.push(refs.searchFormInput.value);
+    cityArray.push(refs.searchFormInput.value.toLowerCase());
     localStorage.setItem('town', JSON.stringify(cityArray));
     refs.favoriteCityStar.removeEventListener('click', setInputValue);
-    console.log(refs.favoriteCityList)
     createCityItem(refs.searchFormInput.value);
+    cityArray.forEach((item, i) => {
+        removeFavoriteItem(i)
+    })
 };
 
 export default () => {
