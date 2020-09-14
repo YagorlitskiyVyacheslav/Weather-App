@@ -30,7 +30,7 @@ const removeFavoriteItem = (index) => {
 }
 refs.favoriteCityList.addEventListener('click', (e) => {
   if (e.target.classList.contains('favorite-list__item-link')) {
-      preloader();
+      preloader.search();
       refs.searchFormInput.value = e.target.textContent;
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
         if (data === null) return;

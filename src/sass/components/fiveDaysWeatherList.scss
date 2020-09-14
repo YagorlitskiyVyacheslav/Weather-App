@@ -64,6 +64,7 @@ img {
   &__item {
     color: white;
     text-align: center;
+    cursor: pointer;
     @media screen and (max-width: 767px) {
       width: 70px;
       height: 160px;
