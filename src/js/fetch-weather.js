@@ -61,8 +61,6 @@ export default {
           let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
           let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
           let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
-          console.log(new Date(day[0].dt*1000))
-          console.log(new Date((day[0].dt - data.city.timezone) * 1000))
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
 
@@ -118,6 +116,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         if(data.cod === '404') return null;
+        if(data.cod === '400') return null;
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;

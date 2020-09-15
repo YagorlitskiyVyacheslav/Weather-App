@@ -48,7 +48,10 @@ const onBtnFiveDayClick = function (data) {
       '.fiveDaysCityWeatherList',
     );
     onClickMoreInfo.addEventListener(`click`, (e) => {
-      
+      console.log(e.target.dataset.id)
+      if (!e.target.dataset.id) {
+        return;
+      }
       const contWeatherHourl = document.querySelector(
         '.fiveDaysCityWeather__hourly',
       );
