@@ -4,70 +4,64 @@ import fetchWeather from './js/fetch-weather';
 import fetchImage from './js/fetch-bg-image';
 import quotes from './js/quote';
 import timerDate from './js/timer-date';
-import preloader from './js/preloader'
+import preloader from './js/preloader';
 import geolocation from './js/geolocation-rendering';
 import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
 import renderingCurrentWeather from './js/renderingCurrentWeather';
 import { error, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
-import carousel from './js/slick-carousel';
+import  'slick-carousel/slick/slick.min';
+import  slick2 from 'slick-carousel';
 require ('jquery');
-require ('slick-carousel');
+// require ('slick-carousel');
 import $ from 'jquery';
 
  window.$ = window.jQuery = $;
 
 
 
-document.addEventListener('DOMContentLoaded', preloader())
-document.addEventListener('DOMContentLoaded', geolocation.getWeather);
+document.addEventListener('DOMContentLoaded', preloader.start());
+document.addEventListener('DOMContentLoaded', geolocation);
 refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.onClickBtnFiveDay.addEventListener('click', () => {
   const cityName = refs.cityName.textContent.split(',')[0];
   fetchWeather.weatherFor5Days(cityName).then(data => {
     onBtnFiveDayClick(data);
     $(document).width(function(){
-      $('.fiveDaysCityWeatherList').slick({
-          arrows:true, // показать стрелки
-          dots:false, // не показывать точки
-          slidesToShow:3, // показывать по 3 слайда
-          slidesToScroll:1,
+      $('.five-days-weather-list').slick({
+          arrows:true,
+         draggable: false,
+          slidesToShow:6, 
+          slidesToScroll:6,
+          infinite:false,
           responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 3
-              }
-            },
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: 5,
-            
-              }
-            }
+            {breakpoint: 768,settings: { slidesToShow: 3, slidesToScroll: 1 }},
+            { breakpoint: 1024, settings: { slidesToShow: 5, slidesToScroll: 1 } },
           ]
       });
-  });
-});
-});
+      });
+      // $('.slick-slider').slick('slickNext').slick('slickPrev'); 
+       });
+     
+})
+
+
+
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  preloader();
-  onBtnOneDayClick();
-  fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-    if(data === null) return;
-    renderingCurrentWeather(data);
-  });
-  refs.favoriteCityStar.addEventListener('click', () => {
-    localStorage.setItem('town', [`${refs.searchFormInput.value}`]);
-    refs.favoriteCityList.insertAdjacentHTML('beforeend', `<li class="search-form__favorite-item">${refs.searchFormInput.value}</li>`);
-    if (localStorage.getItem('town').indexOf(`${refs.searchFormInput.value}`) != -1) {
-      return;
-    }
-  })
-  fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if(data === null) return;
+  preloader.search()
+  setTimeout(() => {
+    onBtnOneDayClick();
+    formStar.removeClassFillYellow();
+    formStar.addClassFillYellow();
+    fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
+      if (data === null) return;
+      renderingCurrentWeather(data);
+    });
+    localStorageInput();
+    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+      if (data === null) return;
       refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-  });
+    });
+  }, 1000)
 })

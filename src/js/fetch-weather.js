@@ -48,7 +48,7 @@ function getNameMonth(data) {
 
 export default {
   apiKey: 'a34e0daebedc4e667c5896b64f2b27c9',
-  baseUrl: 'http://api.openweathermap.org/data/2.5',
+  baseUrl: 'https://api.openweathermap.org/data/2.5',
   weatherFor5Days(cityName) {
     const searchOptions = `/forecast?q=${cityName}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + searchOptions)
@@ -58,10 +58,11 @@ export default {
         let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = new Date(day[0].dt * 1000).getDay();
-          let dateMonth = new Date(day[0].dt * 1000).getDate();
-          let month = new Date(day[0].dt * 1000).getMonth();
-
+          let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
+          let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
+          let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
+          console.log(new Date(day[0].dt*1000))
+          console.log(new Date((day[0].dt - data.city.timezone) * 1000))
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
 
@@ -107,7 +108,6 @@ export default {
           result[i].maxTemperature = Math.round(max);
           result[i].city = data.city.name;
         });
-        result.length = 5;
         return result;
       })
       .catch(err => err)

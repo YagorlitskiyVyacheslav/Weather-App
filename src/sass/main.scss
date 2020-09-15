@@ -7,17 +7,15 @@
 
 
 // COMPONENTS
-@import 'components/fiveDaysWeatherList';
+
 @import 'components/timer-date';
 @import 'components/weather-today-container';
 @import 'components/quote';
 @import 'components/search_form';
 @import 'components/hourlyDayWeather';
 @import 'components/preloader';
-@import 'components/preloader';
-@import 'components/slickfix';
-@import '~slick-carousel/slick/slick.scss';
-@import '~slick-carousel/slick/slick-theme.scss';
+@import 'components/fiveDaysWeatherList';
+@import 'components/_slickfix';
 
 
 

@@ -1,13 +1,16 @@
 require ('jquery');
 require ('slick-carousel');
-import $ from 'jquery';
 
- window.$ = window.jQuery = $;
- $(document).width(function(){
-    $('.fiveDaysCityWeatherList').slick({
-        arrows:true, // показать стрелки
-        dots:false, // не показывать точки
-        slidesToShow:3, // показывать по 3 слайда
-      
-    });
-});
+$(document).width(function(){
+    $('.hourly-weather-list').slick({
+      arrows:true,
+     draggable: false,
+      slidesToShow:6, 
+      slidesToScroll:6,
+      infinite:false,
+      responsive: [
+        {breakpoint: 768,settings: { slidesToShow: 3, slidesToScroll: 1 }},
+        { breakpoint: 1024, settings: { slidesToShow: 5, slidesToScroll: 1 } },
+      ]
+  });
+})
