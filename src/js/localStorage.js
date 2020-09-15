@@ -1,5 +1,6 @@
 import refs from './refs';
 import fetchWeather from './fetch-weather';
+import fetchImage from './fetch-bg-image';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import preloader from './preloader';
 
@@ -35,6 +36,10 @@ refs.favoriteCityList.addEventListener('click', (e) => {
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
         if (data === null) return;
         renderingCurrentWeather(data);
+      });
+      fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+        if (data === null) return;
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
       });
   }
 })

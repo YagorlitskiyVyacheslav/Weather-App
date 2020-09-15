@@ -13,11 +13,12 @@ import '@pnotify/core/dist/BrightTheme.css';
 import  'slick-carousel/slick/slick.min';
 import  slick2 from 'slick-carousel';
 require ('jquery');
-// require ('slick-carousel');
 import $ from 'jquery';
-
  window.$ = window.jQuery = $;
-
+import localStorageInput from './js/localStorage';
+import formStar from './js/favorite-sity-star';
+import { error, defaultModules } from '@pnotify/core/dist/PNotify';
+import '@pnotify/core/dist/BrightTheme.css';
 
 
 document.addEventListener('DOMContentLoaded', preloader.start());
@@ -55,13 +56,25 @@ refs.searchForm.addEventListener('submit', (e) => {
     formStar.removeClassFillYellow();
     formStar.addClassFillYellow();
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-      if (data === null) return;
+      if (data === null) {
+        refs.searchFormInput.value = '';
+        return;
+      }
       renderingCurrentWeather(data);
     });
     localStorageInput();
     fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if (data === null) return;
-      refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      if (data === null) {
+        return error({
+          text: "Can't show such city!",
+        });
+      } else if (data.value === undefined) {
+        return error({
+          text: "Please write search city!",
+        });
+      } else {
+        return refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      }
     });
   }, 1000)
 })
