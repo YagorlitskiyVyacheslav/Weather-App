@@ -3,7 +3,7 @@
         <div class="hourly-weather-wrapper">
           <button class="hourly-weather-close">&#10006;</button>
         </div>
-        <ul class="hourly-weather-list">
+        <ul class="hourly-weather-list" data-slick='{"slidesToShow": 8, "slidesToScroll": 8}'>
               {{#each forecast}}
           <li class="hourly-weather-item" id="Clear">
             <p class="hourly-weather-item__set-time">{{time}}</p>
