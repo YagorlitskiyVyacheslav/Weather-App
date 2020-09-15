@@ -13,7 +13,7 @@ export default {
     tempToday: document.querySelector('.current-temperature-today'),
     tempTodayMin: document.querySelector('.today-min'),
     tempTodayMax: document.querySelector('.today-max'),
-    weatherContainer: document.querySelector('.weatherContainer'),
+    weatherContainer: document.querySelector('.weather-5day-container'),
     onClickBtnOneDay: document.querySelector('.weather-one-day'),
     onClickBtnFiveDay: document.querySelector('.weather-5days'),
     preloader: document.querySelector('.preloader-con'),
