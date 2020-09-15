@@ -35,6 +35,7 @@ bower_components
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+build/
 
 # Dependency directories
 node_modules/
@@ -67,3 +68,6 @@ typings/
 .env.development.local
 .env.test.local
 .env.production.local
+
+package-lock.json
+package.json
