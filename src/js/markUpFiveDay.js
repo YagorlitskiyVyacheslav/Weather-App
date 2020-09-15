@@ -42,15 +42,15 @@ const onBtnFiveDayClick = function (data) {
   isActiveBtnOneDay = true;
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
-    const cityTitle = document.querySelector('.fiveDaysCityTitle');
+    const cityTitle = document.querySelector('.five-days-city-title');
     cityTitle.textContent = refs.cityName.textContent;
     const onClickMoreInfo = document.querySelector(
-      '.fiveDaysCityWeatherList',
+      '.five-days-weather-list',
     );
     onClickMoreInfo.addEventListener(`click`, (e) => {
-      
+      if(!e.target.dataset.id)return;
       const contWeatherHourl = document.querySelector(
-        '.fiveDaysCityWeather__hourly',
+        '.five-days-weather__hourly',
       );
       contWeatherHourl.innerHTML = '';
       const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
