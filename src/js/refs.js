@@ -2,7 +2,7 @@ export default {
     searchForm: document.querySelector('.search-form'),
     searchFormInput: document.querySelector('.search-form__input'),
     favoriteCityStar: document.querySelector('.search-form__favorite-city'),
-    favoriteCityList: document.querySelector('.search-form__favorite-list'),
+    favoriteCityList: document.querySelector('.favorite-list'),
     containerWeatherToday: document.querySelector('.weather-today'),
     dayOfWeek: document.querySelector('.timer-date__dayOfWeek'),
     dayOfMonth: document.querySelector('.timer-date__dayOfMonth'),

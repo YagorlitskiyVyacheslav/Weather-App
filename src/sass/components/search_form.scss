@@ -19,7 +19,6 @@
   margin-bottom: 13px;
   @media screen and (max-width: 767px) {
     width: 280px;
-    margin-left: -20px ;
   }
   &__svg {
     width: 22px;
@@ -32,6 +31,9 @@
     background-position: 50%;
     outline: none;
   }
+  &__star--yelow {
+    fill: rgb(231, 231, 13);
+  }
   &__favorite-city {
     background: inherit;
     border: none;
@@ -40,9 +42,6 @@
       margin-left: 15px;
     }
     & svg:hover {
-      fill: rgb(231, 231, 13);
-    }
-    &__svg--yellow {
       fill: rgb(231, 231, 13);
     }
   }
