@@ -19,7 +19,7 @@ body {
   @media screen and (min-width: 768px) {
     width: 610px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     width: 1060px;
   }
 }
@@ -27,7 +27,7 @@ body {
 .background-image {
   background-image: url("https://miro.medium.com/max/3200/1*-FJDsWYx-uXGgtZrZUAWtg.jpeg");
   position: relative;
-  min-width: 280px;
+  width: 100%;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;

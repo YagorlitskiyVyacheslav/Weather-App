@@ -7,7 +7,7 @@ img {
     margin: 0 auto;
     text-align: center;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     height: auto;
     padding: 25px;
     @include border;
@@ -15,7 +15,7 @@ img {
   @media screen and (min-width: 768px) {
     height: auto;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     height:auto;
   }
   
@@ -26,16 +26,16 @@ img {
      width: 230px;
     }
   
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
      width: 608px;
       @include border;
   
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       width: 1060px;
     }
   
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     @include border;
   }
 }
@@ -65,7 +65,7 @@ img {
     padding: 40px 30px;
     height: 262px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
    height: 300px;
     padding: 40px 35px; 
   }
@@ -73,7 +73,9 @@ img {
   &__item {
     color: white;
     cursor: pointer;
-    @media screen and (max-width: 767px) {
+    margin-right: 10px;
+    margin-left: 10px;
+    @media screen and (max-width: 768px) {
       width: 70px;
       height: 170px;
     }
@@ -81,13 +83,13 @@ img {
       width: 80px;
       height: 180px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       width: 125px;
       height: 248px;
+      margin-right: 25px;
+      margin-left: 25px;
     }
-    &:last-child {
-      margin-right: 0;
-    }
+    
     :hover,
     :active,
     :focus{
@@ -112,7 +114,7 @@ img {
   &__date {
     display: block;
     @include font-size2;
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
       margin-bottom: 6px;
     }
   }
@@ -186,13 +188,11 @@ img {
 
 .five-days-weather__hourly{
   display: block;
+  overflow: hidden;
 } 
 .active-day p{
   color: darkgoldenrod;
 }
 .active-day button{
   color:white;
-}
-.five-days-weather-list__item:hover.five-days-weather-list__day{
-  color: chocolate;
 }

@@ -2,7 +2,7 @@ import fetchWeater from './fetch-weather';
 import refs from './refs';
 import fiveDaysWeatherList from '../template/fiveDays-template.hbs';
 import hourlyWeatherList from '../template/hourlyDay-template.hbs';
-
+// import './slick-carousel;
 
 let isActiveBtnOneDay = true;
 let isActiveBtnFiveDay = false;
@@ -52,27 +52,10 @@ const onBtnFiveDayClick = function (data) {
       const contWeatherHourl = document.querySelector(
         '.five-days-weather__hourly',
       );
-      // if(!e.target.dataset)
-      // // $(document).width(function(){
-      //   $('.hourly-weather-list').slick({
-      //       arrows:true,
-      //      draggable: false,
-      //       slidesToShow:5, 
-      //       slidesToScroll:1,
-      //       infinite:false,
-      //       fill: false,
-      //       horizontalAlign: "center",
-      //       verticalAlign: "50%",
-      //       responsive: [
-      //         {breakpoint: 768,settings: { slidesToShow: 3, slidesToScroll: 1 }},
-      //         { breakpoint: 1024, settings: { slidesToShow: 5, slidesToScroll: 1 } },
-      //       ]
-      //   });
-      // });
-    
-      contWeatherHourl.innerHTML = '';
+         contWeatherHourl.innerHTML = '';
       const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
       contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
+      // slider2();!!!
       const hourlyWeatherContainerClose = document.querySelector(
         '.hourly-weather-close',
 

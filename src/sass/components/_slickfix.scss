@@ -37,11 +37,13 @@
 }
 
 .slick-prev {
+    @media screen and (max-width: 767px) {
   left: 65px;
   bottom: -13px;
+    }
   @media screen and (min-width: 768px) {
     top:50%;
-    left: 5px;
+    left: 20px; 
      }
     &:before {
         content:'\FE64';
@@ -51,31 +53,21 @@
 }
 
 .slick-next {
-    right: 65px;
-     bottom: -13px;
+    @media screen and (max-width: 767px) {
+        right: 65px;
+        bottom: -13px;
+         }
      @media screen and (min-width: 768px) {
         top:50%;
-        right: 10px;
-        color: transparent;
+        right: 20px;
          }
     &:before {
         content: '\FE65';
         font-size: 15px;
         font-weight: bold;
-        @media screen and (min-width: 768px) {
-            color: transparent;
-             }
     }
 }
-li:hover +.slick-next:before,
-li:focus +.slick-next:before,
-li:focus .slick-prev::before,
-li:hover  .slick-prev:before
-{
-    color: white;
-    opacity: 1;
-    font-weight: bolder;
-}
+
 .slick-slider {
     position: relative;
     box-sizing: border-box;
@@ -98,8 +90,12 @@ li:hover  .slick-prev:before
 
     &:focus {
         outline: none;
+        
     }
-
+    &:active {
+        outline: none;
+        
+    }
     &.dragging {
         cursor: pointer;
         cursor: hand;
@@ -153,5 +149,12 @@ li:hover  .slick-prev:before
 .slick-arrow.slick-hidden {
     display: none;
 }
+// .slick-track{
+//     margin-right: 20px;
+//     margin-left: 20px;
+//     text-align: center;
+// }
 
-
+// .slider-item{
+//     text-align: center;
+// }
