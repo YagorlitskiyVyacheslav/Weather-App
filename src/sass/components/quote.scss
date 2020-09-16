@@ -1,6 +1,6 @@
 .quote {
     @media (min-width: 1280px) {
-        padding-bottom: 25px;
+        padding-bottom: 42px;
     }
 };
 
@@ -11,13 +11,13 @@
     margin-left: auto;
     margin-right: 0;
     color: #fff;
-    background-color: rgba(16,33,54,.8);
+    // background-color: rgba(16,33,54,.8);
     border-radius: 20px;
     padding: 10px;
     height: 148px;
     background-image: url(https://imgur.com/kP85n6T.png);
     background-repeat: no-repeat;
-    background-position: 95% 15%;
+    background-position: 95% 0%;
 
     @media (min-width: 768px) {
         width: 372px;
