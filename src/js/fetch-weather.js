@@ -1,4 +1,6 @@
 import refs from "./refs";
+import moment from 'moment';
+moment().format();
 
 
 function SortArrayForDays(data) {
@@ -58,11 +60,9 @@ export default {
         let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
-          let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
-          let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
-          console.log(new Date(day[0].dt*1000))
-          console.log(new Date((day[0].dt - data.city.timezone) * 1000))
+          let dayOfTheWeek = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDay();
+          let dateMonth = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDate();
+          let month = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getMonth();
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
 
@@ -79,17 +79,17 @@ export default {
             element.main.temp_min = Math.round(element.main.temp_min);
             element.main.temp_max = Math.round(element.main.temp_max);
             element.main.temp = Math.round(element.main.temp);
-            delete element.clouds;
-            delete element.pop;
-            delete element.sys;
-            delete element.visibility;
-            delete element.dt;
-            delete element.main.feels_like;
-            delete element.main.grnd_level;
-            delete element.main.sea_level;
-            delete element.main.temp_kf;
-            delete element.weather;
-            delete element.dt_txt;
+            // delete element.clouds;
+            // delete element.pop;
+            // delete element.sys;
+            // delete element.visibility;
+            // delete element.dt;
+            // delete element.main.feels_like;
+            // delete element.main.grnd_level;
+            // delete element.main.sea_level;
+            // delete element.main.temp_kf;
+            // delete element.weather;
+            // delete element.dt_txt;
           })
           result.push({
             forecast: [...day]
@@ -118,6 +118,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         if(data.cod === '404') return null;
+        if(data.cod === '400') return null;
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
