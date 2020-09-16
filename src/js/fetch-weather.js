@@ -48,7 +48,7 @@ function getNameMonth(data) {
 
 export default {
   apiKey: 'a34e0daebedc4e667c5896b64f2b27c9',
-  baseUrl: 'http://api.openweathermap.org/data/2.5',
+  baseUrl: 'https://api.openweathermap.org/data/2.5',
   weatherFor5Days(cityName) {
     const searchOptions = `/forecast?q=${cityName}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + searchOptions)
@@ -58,10 +58,11 @@ export default {
         let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = new Date(day[0].dt * 1000).getDay();
-          let dateMonth = new Date(day[0].dt * 1000).getDate();
-          let month = new Date(day[0].dt * 1000).getMonth();
-
+          let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
+          let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
+          let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
+          console.log(new Date(day[0].dt*1000))
+          console.log(new Date((day[0].dt - data.city.timezone) * 1000))
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
 
@@ -98,17 +99,15 @@ export default {
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
-          result[i].icon = result[i].forecast[0].icon;
-          console.log(result[i] === result[0])
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
-            result[i].icon = result[i].forecast[3].icon;
+            result[i].icon = result[i].forecast[2].icon;
           }
           result[i].minTemperature = Math.round(min);
           result[i].maxTemperature = Math.round(max);
+          result[i].city = data.city.name;
         });
-        result.length = 5;
         return result;
       })
       .catch(err => err)
@@ -118,6 +117,7 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
+        if(data.cod === '404') return null;
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;

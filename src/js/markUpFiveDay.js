@@ -26,7 +26,7 @@ const onBtnOneDayClick = function () {
   return;
 };
 
-const onBtnFiveDayClick = function (cityName) {
+const onBtnFiveDayClick = function (data) {
   if (isActiveBtnFiveDay) {
     return;
   }
@@ -40,24 +40,17 @@ const onBtnFiveDayClick = function (cityName) {
   refs.weatherContainer.style.display = 'block';
   refs.blickQuote.style.display = 'none';
   isActiveBtnOneDay = true;
-  fetchWeater.weatherFor5Days(cityName).then(data => {
     const markUp = fiveDaysWeatherList(data);
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
-    const cityTitle = document.querySelector('.fiveDaysCityTitle');
+    const cityTitle = document.querySelector('.five-days-city-title');
     cityTitle.textContent = refs.cityName.textContent;
     const onClickMoreInfo = document.querySelector(
-      '.fiveDaysCityWeatherList',
+      '.five-days-weather-list',
     );
     onClickMoreInfo.addEventListener(`click`, (e) => {
-      // const onClickMoreInfo = document.querySelector(
-      //   '.fiveDaysCityWeatherList__item',
-      // );
-        
-      // onClickMoreInfo.classList.add('activContainer');
-      //TODO Що по твоєму має добавляти activeContainer?
-
+      if(!e.target.dataset.id)return;
       const contWeatherHourl = document.querySelector(
-        '.fiveDaysCityWeather__hourly',
+        '.five-days-weather__hourly',
       );
       contWeatherHourl.innerHTML = '';
       const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
@@ -69,7 +62,6 @@ const onBtnFiveDayClick = function (cityName) {
       hourlyWeatherContainerClose.addEventListener(`click`, () => {
         contWeatherHourl.innerHTML = '';
       });
-    });
   });
 };
 export {
