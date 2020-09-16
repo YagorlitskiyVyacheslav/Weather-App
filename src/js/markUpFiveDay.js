@@ -52,6 +52,24 @@ const onBtnFiveDayClick = function (data) {
       const contWeatherHourl = document.querySelector(
         '.five-days-weather__hourly',
       );
+      // if(!e.target.dataset)
+      // // $(document).width(function(){
+      //   $('.hourly-weather-list').slick({
+      //       arrows:true,
+      //      draggable: false,
+      //       slidesToShow:5, 
+      //       slidesToScroll:1,
+      //       infinite:false,
+      //       fill: false,
+      //       horizontalAlign: "center",
+      //       verticalAlign: "50%",
+      //       responsive: [
+      //         {breakpoint: 768,settings: { slidesToShow: 3, slidesToScroll: 1 }},
+      //         { breakpoint: 1024, settings: { slidesToShow: 5, slidesToScroll: 1 } },
+      //       ]
+      //   });
+      // });
+    
       contWeatherHourl.innerHTML = '';
       const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
       contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);

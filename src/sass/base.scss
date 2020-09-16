@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  background-color: lightblue;
 }
 
 *,
@@ -20,7 +19,7 @@ body {
   @media screen and (min-width: 768px) {
     width: 610px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     width: 1060px;
   }
 }
@@ -28,7 +27,7 @@ body {
 .background-image {
   background-image: url("https://miro.medium.com/max/3200/1*-FJDsWYx-uXGgtZrZUAWtg.jpeg");
   position: relative;
-  width: 100%;
+  min-width: 280px;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
