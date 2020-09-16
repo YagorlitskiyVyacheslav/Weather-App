@@ -17,6 +17,9 @@ import $ from 'jquery';
  window.$ = window.jQuery = $;
 import localStorageInput from './js/localStorage';
 import formStar from './js/favorite-sity-star';
+import notification from './js/notification'
+import moment from 'moment';
+moment().format();
 
 
 document.addEventListener('DOMContentLoaded', preloader.start());
@@ -43,32 +46,22 @@ refs.onClickBtnFiveDay.addEventListener('click', () => {
        });
      
 })
-
 refs.searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   preloader.search()
   setTimeout(() => {
     onBtnOneDayClick();
     formStar.removeClassFillYellow();
-    formStar.addClassFillYellow();
+    formStar.addClassFillYellow(  );
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
       if (data === null) {
-        refs.searchFormInput.value = '';
-        return;
+        notification(data);
+        return
       }
       renderingCurrentWeather(data);
     });
     localStorageInput();
     fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      if (data === null) {
-        return error({
-          text: "Can't show such city!",
-        });
-      } else if (refs.searchFormInput.value === '') {
-        return error({
-          text: "Please write search city!",
-        });
-      }
       return refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
     });
   }, 1000)
