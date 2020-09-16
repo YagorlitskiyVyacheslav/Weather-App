@@ -61,7 +61,7 @@ export default {
           let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
           let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
           let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
-          console.log(new Date(day[0].dt*1000))
+          console.log(new Date(day[0].dt * 1000))
           console.log(new Date((day[0].dt - data.city.timezone) * 1000))
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
@@ -74,7 +74,7 @@ export default {
 
             const time = element.dt_txt.split(' ')[1]
             element.time = `${time.split(':')[0]}:${time.split(':')[1]}`;
-            
+
             element.icon = element.weather[0].icon;
             element.main.temp_min = Math.round(element.main.temp_min);
             element.main.temp_max = Math.round(element.main.temp_max);
@@ -95,11 +95,11 @@ export default {
             forecast: [...day]
           });
           result[i].id = id;
-          id ++;
+          id++;
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
           result[i].month = month;
-          if(result[i] === result[0]) {
+          if (result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
             result[i].icon = result[i].forecast[2].icon;
@@ -117,28 +117,28 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        if(data.cod === '404') return null;
+        if (data.cod === '404' || data.cod === '400') return null;
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
-        result.sunrise = `${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getHours()}:${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getMinutes()}`;
-        result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
+        result.sunrise = `${new Date((data.sys.sunrise) * 1000 + (-10800 + data.timezone) * 1000).getHours()}:${new Date((data.sys.sunrise) * 1000 + (-10800 + data.timezone) * 1000).getMinutes()}`;
+        result.sunset = `${new Date(data.sys.sunset * 1000).getHours()}:${new Date(data.sys.sunset * 1000).getMinutes()}`;
         result.currentTemp = Math.round(data.main.temp);
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);
         return result;
       }).catch(err => err);
   },
-  searchWeaherByGeoOn5Days({lat, lon}) {
+  searchWeaherByGeoOn5Days({ lat, lon }) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => data.name)
       .then(cityName => this.weatherFor5Days(cityName));
   },
-  searchWeaherByGeoOnCurrentDay({lat, lon}) {
+  searchWeaherByGeoOnCurrentDay({ lat, lon }) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
