@@ -1,4 +1,6 @@
 import refs from "./refs";
+import moment from 'moment';
+moment().format();
 
 
 function SortArrayForDays(data) {
@@ -58,11 +60,17 @@ export default {
         let id = 0;
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
+<<<<<<< HEAD
           let dayOfTheWeek = new Date((day[0].dt - data.city.timezone) * 1000).getDay();
           let dateMonth = new Date((day[0].dt - data.city.timezone) * 1000).getDate();
           let month = new Date((day[0].dt - data.city.timezone) * 1000).getMonth();
           console.log(new Date(day[0].dt * 1000))
           console.log(new Date((day[0].dt - data.city.timezone) * 1000))
+=======
+          let dayOfTheWeek = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDay();
+          let dateMonth = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDate();
+          let month = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getMonth();
+>>>>>>> 47be5f536cde260680d58ad206e5a193575cdd4b
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
 
@@ -117,7 +125,12 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
+<<<<<<< HEAD
         if (data.cod === '404' || data.cod === '400') return null;
+=======
+        if(data.cod === '404') return null;
+        if(data.cod === '400') return null;
+>>>>>>> 47be5f536cde260680d58ad206e5a193575cdd4b
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
