@@ -11,13 +11,12 @@ defaults.width = '250px';
 defaults.delay = 1000;
 
 export default (data) => {
-    console.log(data)
-    if (data === null) {
+    if (data === '404') {
         refs.searchFormInput.value = '';
       return error({
         text: "Can't show such city!",
       });
-    } else if (refs.searchFormInput.value === '') {
+    } else if (data === '400') {
       return error({
         text: "Please write search city!",
       });

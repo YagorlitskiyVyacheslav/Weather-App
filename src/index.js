@@ -54,15 +54,15 @@ refs.searchForm.addEventListener('submit', (e) => {
     formStar.removeClassFillYellow();
     formStar.addClassFillYellow(  );
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-      if (data === null) {
+      if (data === '400' || data === '404') {
         notification(data);
-        return
+        return;
       }
+      fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      });
       renderingCurrentWeather(data);
     });
     localStorageInput();
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      return refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-    });
   }, 1000)
 })

@@ -3,6 +3,7 @@ import fetchWeather from './fetch-weather';
 import fetchImage from './fetch-bg-image';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import preloader from './preloader';
+import { onBtnOneDayClick, onBtnFiveDayClick } from './markUpFiveDay';
 
 let cityArray = localStorage.getItem('town') ? JSON.parse(localStorage.getItem('town')) : [];
 localStorage.setItem('town', JSON.stringify(cityArray))
@@ -33,12 +34,11 @@ refs.favoriteCityList.addEventListener('click', (e) => {
   if (e.target.classList.contains('favorite-list__item-link')) {
       preloader.search();
       refs.searchFormInput.value = e.target.textContent;
+      onBtnOneDayClick();
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-        if (data === null) return;
         renderingCurrentWeather(data);
       });
       fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-        if (data === null) return;
         refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
       });
   }
