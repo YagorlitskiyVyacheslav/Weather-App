@@ -60,18 +60,18 @@ export default {
         let id = 0;
         // console.log(data.list)
         data.list.forEach((item, i) => {
-          item.dt = new Date((item.dt + data.city.timezone)*1000)
+          item.dt = (item.dt + new Date().getTimezoneOffset()*60 - 10800 + data.city.timezone)*1000;
           // console.log(item)
         })
         console.log(new Date())
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = day[0].dt.getDay();
-          let dateMonth = day[0].dt.getDate();
-          let month = day[0].dt.getMonth();
+          let dayOfTheWeek = new Date(day[0].dt).getDay();
+          let dateMonth = new Date(day[0].dt).getDate();
+          let month = new Date(day[0].dt).getMonth();
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
-          console.log(day[0].dt)
+          console.log(new Date(day[0].dt))
           // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60) * 1000));
           // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60 - data.city.timezone) * 1000))
           let min = 100;
@@ -132,8 +132,9 @@ export default {
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
-        result.sunrise = `${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getHours()}:${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getMinutes()}`;
-        result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
+        const timeTimezone = new Date().getTimezoneOffset() * 60 + data.timezone;
+        result.sunrise = `${new Date((data.sys.sunrise + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunrise + timeTimezone)*1000).getMinutes()}`;
+        result.sunset = `${new Date((data.sys.sunset + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunset + timeTimezone)*1000).getMinutes()}`;
         result.currentTemp = Math.round(data.main.temp);
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);

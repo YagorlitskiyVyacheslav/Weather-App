@@ -28,6 +28,7 @@ refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.onClickBtnFiveDay.addEventListener('click', () => {
   const cityName = refs.cityName.textContent.split(',')[0];
   fetchWeather.weatherFor5Days(cityName).then(data => {
+    console.log(data)
     onBtnFiveDayClick(data);
     $(document).width(function(){
       $('.five-days-weather-list').slick({
@@ -58,6 +59,7 @@ refs.searchForm.addEventListener('submit', (e) => {
         notification(data);
         return;
       }
+
       fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
         refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
       });
