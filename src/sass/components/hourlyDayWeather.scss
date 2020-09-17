@@ -12,7 +12,7 @@
   display: inline-block;
   align-items: center;
   width: 24px;
-  height: 24px;
+  height: 18px;
   border-radius: 20px;
   border: none;
   color: $primary-white-color;
@@ -40,7 +40,7 @@
 }
 
 .hourly-weather-next-btn {
-  display:block;
+  display: none;
 }
 
 .hourly-weather-item {
@@ -110,7 +110,7 @@
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .hourly-weather-list {
     padding-left: 33px;
   }
@@ -147,7 +147,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .hourly-weather-list {
     @include center-flex('all');
   }

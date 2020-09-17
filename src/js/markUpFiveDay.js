@@ -2,7 +2,7 @@ import fetchWeater from './fetch-weather';
 import refs from './refs';
 import fiveDaysWeatherList from '../template/fiveDays-template.hbs';
 import hourlyWeatherList from '../template/hourlyDay-template.hbs';
-// import './slick-carousel;
+
 
 let isActiveBtnOneDay = true;
 let isActiveBtnFiveDay = false;
@@ -52,10 +52,9 @@ const onBtnFiveDayClick = function (data) {
       const contWeatherHourl = document.querySelector(
         '.five-days-weather__hourly',
       );
-         contWeatherHourl.innerHTML = '';
+      contWeatherHourl.innerHTML = '';
       const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
       contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
-      // slider2();!!!
       const hourlyWeatherContainerClose = document.querySelector(
         '.hourly-weather-close',
 

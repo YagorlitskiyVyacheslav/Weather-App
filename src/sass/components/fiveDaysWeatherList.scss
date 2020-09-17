@@ -8,33 +8,23 @@ img {
     text-align: center;
   
   @media screen and (max-width: 767px) {
+    width: 280px;
     height: auto;
     padding: 25px;
     @include border;
   }
   @media screen and (min-width: 768px) {
+    width: 768px;
     height: auto;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
+    width: 1060px;
     height:auto;
   }
-  
   &__wrapper{
     display: block;
+    width: 100%;
     height: auto;
-    @media screen and (max-width: 768px) {
-     width: 230px;
-    }
-  
-    @media screen and (min-width: 768px) {
-     width: 608px;
-      @include border;
-  
-    }
-    @media screen and (min-width: 1280px) {
-      width: 1060px;
-    }
-  
   @media screen and (min-width: 768px) {
     @include border;
   }
@@ -51,51 +41,48 @@ img {
   }
 }
 .five-days-weather-list {
-  justify-content: center;
-  width: 100%;
   @include list;
   font-family: 'Lato';
   // margin: auto;
   overflow: hidden;
-  @media screen and (max-width: 768px) {
-    height: 160px;
+  @media screen and (max-width: 767px) {
+    width: 230px;
+    min-width: 160px;
+
   }
 
   @media screen and (min-width: 768px) {
+    width: 608px;
     padding: 40px 30px;
-    height: 262px;
+    min-height: 262px;
+    @include border;
   }
-  @media screen and (min-width: 1280px) {
-   height: 300px;
+  @media screen and (min-width: 1200px) {
+    width: 1060px;
+    height: 300px;
     padding: 40px 35px; 
+    @include border;
   }
 
   &__item {
     color: white;
     cursor: pointer;
-    margin-right: 10px;
-    margin-left: 10px;
-    @media screen and (max-width: 768px) {
+    width: 80% !important;
+    @media screen and (max-width: 767px) {
       width: 70px;
-      height: 170px;
+      height: 160px;
+      margin-right: 25px;
     }
     @media screen and (min-width: 768px) {
       width: 80px;
       height: 180px;
     }
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1200px) {
       width: 125px;
       height: 248px;
-      margin-right: 25px;
-      margin-left: 25px;
     }
-    
-    :hover,
-    :active,
-    :focus{
-      outline: none;
-      cursor: pointer;
-      border: none;
+    &:last-child {
+      margin-right: 0;
     }
   }
   &__item--btn{
@@ -108,13 +95,12 @@ img {
     &:hover,
     &:active{
       outline: none;
-      cursor: pointer;
     }
 }
   &__date {
     display: block;
     @include font-size2;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       margin-bottom: 6px;
     }
   }
@@ -135,7 +121,6 @@ img {
     height: 30px;
      margin-bottom: 10px;
     @include list;
-    justify-content: center;
     @media screen and (min-width: 768px) {
       height: 45px;
     }
@@ -154,29 +139,22 @@ img {
       left: 50%;
       transform: translateX(-250%);
       background-color: gray;
-       @media screen and (min-width: 768px) {
+      @media screen and (min-width: 768px) {
         left: 50%;
         height: 80%;
       }
-    }
-    &--min{
-      margin-right: 5px;
-    }
-    &--max{
-      margin-left: 5px;
     }
   }
   
 }
 
-.temperature{
-    &__header{
+.temperature {
+  &__header {
     padding:0 2px;
     @include font-size1;
     color: gray;
-    justify-content: center;
-    }
-    &__value {
+  }
+  &__value {
     display: block;
     color: rgb(255, 153, 0);
     font-weight: bold;
@@ -184,15 +162,8 @@ img {
     @include font-size2;
   }
 }
-  
 
 .five-days-weather__hourly{
   display: block;
-  overflow: hidden;
-} 
-.active-day p{
-  color: darkgoldenrod;
 }
-.active-day button{
-  color:white;
-}
+
