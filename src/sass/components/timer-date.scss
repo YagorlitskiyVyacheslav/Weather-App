@@ -133,10 +133,8 @@ img {
         height: 218px;
         width: 600px;
         border-radius: 0;
-        border-top-right-radius: 35px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
+        border-radius: 35px;
+        margin-left: -100px;
         margin-bottom: 0;
         &__day {
             align-self: start;

@@ -2,7 +2,6 @@ import refs from "./refs";
 import moment from 'moment';
 moment().format();
 
-
 function SortArrayForDays(data) {
   let newObj = {};
   let dateForDay = [];
@@ -23,31 +22,6 @@ function SortArrayForDays(data) {
   return newArr;
 }
 
-function getNameDayWeek(data) {
-  if (data === 0) return 'Sunday';
-  if (data === 1) return 'Monday';
-  if (data === 2) return 'Tuesday';
-  if (data === 3) return 'Wednesday';
-  if (data === 4) return 'Thoursday';
-  if (data === 5) return 'Friday';
-  if (data === 6) return 'Saturday';
-}
-
-function getNameMonth(data) {
-  if (data === 0) return 'Jan';
-  if (data === 1) return 'Feb';
-  if (data === 2) return 'Mar';
-  if (data === 3) return 'Apr';
-  if (data === 4) return 'May';
-  if (data === 5) return 'Jun';
-  if (data === 6) return 'Jul';
-  if (data === 7) return 'Aug';
-  if (data === 8) return 'Sep';
-  if (data === 9) return 'Oct';
-  if (data === 10) return 'Nov';
-  if (data === 11) return 'Dec';
-}
-
 export default {
   apiKey: 'a34e0daebedc4e667c5896b64f2b27c9',
   baseUrl: 'https://api.openweathermap.org/data/2.5',
@@ -58,30 +32,18 @@ export default {
       .then(data => {
         const result = [];
         let id = 0;
-        // console.log(data.list)
-        data.list.forEach((item, i) => {
-          item.dt = (item.dt + new Date().getTimezoneOffset()*60 - 10800 + data.city.timezone)*1000;
-          // console.log(item)
-        })
-        console.log(new Date())
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = new Date(day[0].dt).getDay();
-          let dateMonth = new Date(day[0].dt).getDate();
-          let month = new Date(day[0].dt).getMonth();
-          dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
-          month = getNameMonth(month);
-          console.log(new Date(day[0].dt))
-          // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60) * 1000));
-          // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60 - data.city.timezone) * 1000))
+          let dayOfTheWeek = moment(new Date(day[0].dt * 1000)).format('dddd');
+          let dateMonth = moment(new Date(day[0].dt * 1000)).format("MMM Do");
           let min = 100;
           let max = 0;
           day.forEach(element => {
             if (element.main.temp_min < min) min = element.main.temp_min;
             if (element.main.temp_max > max) max = element.main.temp_max;
 
-            const time = element.dt_txt.split(' ')[1]
-            element.time = `${time.split(':')[0]}:${time.split(':')[1]}`;
+            console.log(new Date(element.dt * 1000 + new Date().getTimezoneOffset()*60000))
+            element.time = moment(new Date(element.dt * 1000 + new Date().getTimezoneOffset() * 60000)).format('LT');
             
             element.icon = element.weather[0].icon;
             element.main.temp_min = Math.round(element.main.temp_min);
@@ -106,7 +68,6 @@ export default {
           id ++;
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
-          result[i].month = month;
           if(result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
@@ -133,8 +94,8 @@ export default {
         result.name = data.name;
         result.country = data.sys.country;
         const timeTimezone = new Date().getTimezoneOffset() * 60 + data.timezone;
-        result.sunrise = `${new Date((data.sys.sunrise + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunrise + timeTimezone)*1000).getMinutes()}`;
-        result.sunset = `${new Date((data.sys.sunset + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunset + timeTimezone)*1000).getMinutes()}`;
+        result.sunrise = moment(new Date((data.sys.sunrise + timeTimezone) * 1000)).format('LT');
+        result.sunset = moment(new Date((data.sys.sunset + timeTimezone) * 1000)).format('LT');
         result.currentTemp = Math.round(data.main.temp);
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);
