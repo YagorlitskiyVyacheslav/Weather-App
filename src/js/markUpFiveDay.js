@@ -44,6 +44,14 @@ const onBtnFiveDayClick = function (data) {
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
     const cityTitle = document.querySelector('.five-days-city-title');
     cityTitle.textContent = refs.cityName.textContent;
+
+    // const isActivLi=document.querySelectorAll(
+    //   '.five-days-weather-list__item');
+    
+    //   isActivLi.addEventListener(`click`, (e) => {
+    //        console.log(e.target)
+    // });
+
     const onClickMoreInfo = document.querySelector(
       '.five-days-weather-list',
     );

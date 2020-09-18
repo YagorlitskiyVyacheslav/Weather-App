@@ -1,6 +1,28 @@
-// .five-days-weather-btns__prev,
-// .five-days-weather-btns__next {
-// }
+button.five-days-weather-btns__prev.slick-arrow.slick-prev:before {
+  @media screen and (min-width: 768px) {
+    top: -130px;
+    left: -130px;
+  }
+  @media screen and (min-width: 1280px) {
+    left: -230px;
+  }
+}
+
+button.five-days-weather-btns__next.slick-arrow.slick-next:before {
+  @media screen and (min-width: 768px) {
+    top: -130px;
+    right: -130px;
+  }
+  @media screen and (min-width: 1280px) {
+    right: -230px;
+  }
+}
+button.hourly-weather-btns__prev.slick-prev.slick-arrow:before,
+button.hourly-weather-btns__next.slick-next.slick-arrow:before {
+  position: relative;
+  border-radius: 50%;
+  background-color: $background-two-color;
+}
 
 .slick-prev,
 .slick-next {
