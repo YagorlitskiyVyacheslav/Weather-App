@@ -80,7 +80,6 @@ const onBtnFiveDayClick = function (data) {
 
     onClickMoreInfo.addEventListener(`click`, (e) => {
       if(!e.target.dataset.id)return;
-      
       const contWeatherHourl = document.querySelector(
         '.five-days-weather__hourly',
       );

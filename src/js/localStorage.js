@@ -14,7 +14,6 @@ const createCityItem = (item, index) => {
           <p class="favorite-list__item-link">${item}</p>
           <button class="favorite-list__item-close">&#10006;</button>
         </li>`);
-        
 };
 const removeFavoriteItem = (index) => {
     const favoriteListItem = document.querySelectorAll('.favorite-list__item');
@@ -37,6 +36,7 @@ refs.favoriteCityList.addEventListener('click', (e) => {
       onBtnOneDayClick();
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
         renderingCurrentWeather(data);
+
       });
       fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
         refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
@@ -45,7 +45,7 @@ refs.favoriteCityList.addEventListener('click', (e) => {
 })
 data.forEach((item, index) => {
     createCityItem(item);
-    removeFavoriteItem(index)
+    removeFavoriteItem(index);
 });
 
 const setInputValue = (e) => {
