@@ -8,8 +8,8 @@ import { each } from 'jquery';
 let isActiveBtnOneDay = true;
 let isActiveBtnFiveDay = false;
 
-
 const onBtnOneDayClick = function () {
+  
   if (!isActiveBtnOneDay) {
     return;
   }
@@ -24,14 +24,15 @@ const onBtnOneDayClick = function () {
   refs.blickQuote.style.display = 'block';
   refs.weatherContainer.innerHTML = '';
   isActiveBtnFiveDay = false;
+  refs.positionForBtn.classList.remove('position-for-btn');
   return;
 };
 
 const onBtnFiveDayClick = function (data) {
+  refs.positionForBtn.classList.add('position-for-btn');
   if (isActiveBtnFiveDay) {
     return;
   }
-  console.log(data)
   isActiveBtnFiveDay = true;
   refs.onClickBtnFiveDay.classList.remove('weather-button-unactive');
   refs.onClickBtnFiveDay.classList.add('weather-button-active');
@@ -42,61 +43,51 @@ const onBtnFiveDayClick = function (data) {
   refs.weatherContainer.style.display = 'block';
   refs.blickQuote.style.display = 'none';
   isActiveBtnOneDay = true;
-    const markUp = fiveDaysWeatherList(data);
-    refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
-    const cityTitle = document.querySelector('.five-days-city-title');
-    cityTitle.textContent = refs.cityName.textContent;
-    const onClickMoreInfo = document.querySelector(
-      '.five-days-weather-list',
-    );
+  const markUp = fiveDaysWeatherList(data);
+  refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
+  const cityTitle = document.querySelector('.five-days-city-title');
+  cityTitle.textContent = refs.cityName.textContent;
+  const onClickMoreInfo = document.querySelector('.five-days-weather-list');
 
-// start
-
-    // const ActivTeg =document.querySelectorAll('.five-days-weather-list__item');
-    // console.dir(ActivTeg)
-   
-
-// Функциональный forEach
-// ActivTeg.forEach(teg => console.log(teg));
-
-// Указываем параметр idx если нужен доступ к счетчику
-// ActivTeg.forEach((teg, idx) => console.log(`index ${idx}, value ${teg}`));
-
-    // ActivTeg.addEventListener(`click`, (e) => {
-    //   let elemId
-    // console.log(e)
-    // // if(elemId!==e.target.dataset.id){
-    // //   elemId=e.target.dataset.id
-    // //   console.log(elemId, "activ")
-     
-    // //   ActivTeg.classList.add('.active-day')
-    // // }
-    // // console.dir(e.target)
-    // })
-
-
-
-// end
-
-    onClickMoreInfo.addEventListener(`click`, (e) => {
-      if(!e.target.dataset.id)return;
-      const contWeatherHourl = document.querySelector(
-        '.five-days-weather__hourly',
+  onClickMoreInfo.addEventListener(`click`, e => {
+    if (!e.target.dataset.id) return;
+    if (e.target.dataset.id) {
+      const li = document.querySelectorAll('.five-days-weather-list__day');
+      const btn = document.querySelectorAll(
+        '.five-days-weather-list__item--btn',
       );
-      contWeatherHourl.innerHTML = '';
-      const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
-      contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
-     slider2();
-      const hourlyWeatherContainerClose = document.querySelector(
-        '.hourly-weather-close',
-
-      );
-      hourlyWeatherContainerClose.addEventListener(`click`, () => {
-        contWeatherHourl.innerHTML = '';
+      const id = e.target.dataset.id;
+      const currentActiveLi = e.currentTarget.querySelector('.active-day');
+      const currentActiveBtn = e.currentTarget.querySelector('.active-btn');
+      if (currentActiveLi && currentActiveBtn) {
+        currentActiveLi.classList.remove('active-day');
+        currentActiveBtn.classList.remove('active-btn');
+      }
+      li.forEach(item => {
+        if (item.dataset.id === id) {
+          const nextActiveLi = item;
+          nextActiveLi.classList.add('active-day');
+        }
       });
+      btn.forEach(item => {
+        if (item.dataset.id === id) {
+          item.classList.add('active-btn');
+        }
+      });
+    }
+    const contWeatherHourl = document.querySelector(
+      '.five-days-weather__hourly',
+    );
+    contWeatherHourl.innerHTML = '';
+    const markUpHourly = hourlyWeatherList(data[e.target.dataset.id]);
+    contWeatherHourl.insertAdjacentHTML('beforeend', markUpHourly);
+    slider2();
+    const hourlyWeatherContainerClose = document.querySelector(
+      '.hourly-weather-close',
+    );
+    hourlyWeatherContainerClose.addEventListener(`click`, () => {
+      contWeatherHourl.innerHTML = '';
+    });
   });
 };
-export {
-  onBtnOneDayClick,
-  onBtnFiveDayClick
-}
+export { onBtnOneDayClick, onBtnFiveDayClick };

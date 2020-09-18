@@ -141,7 +141,7 @@ img {
       background-color: gray;
       @media screen and (min-width: 768px) {
         left: 50%;
-        height: 80%;
+        height: 75%;
       }
     }
     &--min {
@@ -174,9 +174,9 @@ img {
   overflow: hidden;
 }
 .active-day{
-  color: darkgoldenrod;
+  color: rgb(255, 153, 0);
 }
-.active-day button {
+.active-btn {
   color: white;
 }
 .five-days-weather-btns {

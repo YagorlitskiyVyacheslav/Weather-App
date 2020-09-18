@@ -106,6 +106,7 @@ sup {
   display: flex;
   justify-content: space-between;
 }
+
 @media (max-width: 768px) {
   .today-temperature {
     width: 180px;
@@ -120,19 +121,19 @@ sup {
     &-container {
       padding-top: 104px;
     }
-  }
 
-  .current-temperature-today {
-    margin-bottom: 30px;
-    font-size: 90px;
-  }
-  .minimax-box {
-    width: 160px;
-  }
-  .current-name-city {
-    font-size: 18px;
-    line-height: 1.222;
-    margin-bottom: 26px;
+    .current-temperature-today {
+      margin-bottom: 30px;
+      font-size: 90px;
+    }
+    .minimax-box {
+      width: 160px;
+    }
+    .current-name-city {
+      font-size: 18px;
+      line-height: 1.222;
+      margin-bottom: 26px;
+    }
   }
 }
 @media (min-width: 1280px) {
@@ -142,5 +143,11 @@ sup {
     width: 492px;
     position: relative;
     right: -674px;
+  }
+}
+.position-for-btn {
+  @media (min-width: 1280px) {
+    position: absolute;
+    top: 130px;
   }
 }
