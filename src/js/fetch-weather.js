@@ -35,7 +35,7 @@ export default {
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
           let dayOfTheWeek = moment(new Date(day[0].dt * 1000)).format('dddd');
-          let dateMonth = moment(new Date(day[0].dt * 1000)).format("MMM Do");
+          let dateMonth = moment(new Date(day[0].dt * 1000)).format("DD ddd");
           let min = 100;
           let max = 0;
           day.forEach(element => {
