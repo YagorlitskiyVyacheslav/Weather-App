@@ -58,14 +58,22 @@ export default {
       .then(data => {
         const result = [];
         let id = 0;
+        // console.log(data.list)
+        data.list.forEach((item, i) => {
+          item.dt = (item.dt + new Date().getTimezoneOffset()*60 - 10800 + data.city.timezone)*1000;
+          // console.log(item)
+        })
+        console.log(new Date())
         data.list = SortArrayForDays(data);
         data.list.forEach((day, i) => {
-          let dayOfTheWeek = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDay();
-          let dateMonth = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getDate();
-          let month = new Date((day[0].dt - new Date().getTimezoneOffset()*60+data.city.timezone) * 1000).getMonth();
+          let dayOfTheWeek = new Date(day[0].dt).getDay();
+          let dateMonth = new Date(day[0].dt).getDate();
+          let month = new Date(day[0].dt).getMonth();
           dayOfTheWeek = getNameDayWeek(dayOfTheWeek);
           month = getNameMonth(month);
-
+          console.log(new Date(day[0].dt))
+          // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60) * 1000));
+          // console.log(new Date((day[0].dt + new Date().getTimezoneOffset() * 60 - data.city.timezone) * 1000))
           let min = 100;
           let max = 0;
           day.forEach(element => {
@@ -117,15 +125,16 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        if(data.cod === '404') return null;
-        if(data.cod === '400') return null;
+        if(data.cod === '404') return '404';
+        if(data.cod === '400') return '400';
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
         result.name = data.name;
         result.country = data.sys.country;
-        result.sunrise = `${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getHours()}:${new Date((data.sys.sunrise)*1000+(-10800+data.timezone)*1000).getMinutes()}`;
-        result.sunset = `${new Date(data.sys.sunset*1000).getHours()}:${new Date(data.sys.sunset*1000).getMinutes()}`;
+        const timeTimezone = new Date().getTimezoneOffset() * 60 + data.timezone;
+        result.sunrise = `${new Date((data.sys.sunrise + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunrise + timeTimezone)*1000).getMinutes()}`;
+        result.sunset = `${new Date((data.sys.sunset + timeTimezone)*1000).getHours()}:${new Date((data.sys.sunset + timeTimezone)*1000).getMinutes()}`;
         result.currentTemp = Math.round(data.main.temp);
         result.tempMin = Math.round(data.main.temp_min);
         result.tempMax = Math.round(data.main.temp_max);

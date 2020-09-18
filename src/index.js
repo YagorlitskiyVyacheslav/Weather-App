@@ -12,8 +12,8 @@ import { error, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import { slider1 } from './js/slick-carousel';
 
-// import localStorageInput from './js/localStorage';
-// import formStar from './js/favorite-sity-star';
+import localStorageInput from './js/localStorage';
+import formStar from './js/favorite-sity-star';
 import notification from './js/notification';
 import moment from 'moment';
 moment().format();
@@ -24,6 +24,7 @@ refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.onClickBtnFiveDay.addEventListener('click', () => {
   const cityName = refs.cityName.textContent.split(',')[0];
   fetchWeather.weatherFor5Days(cityName).then(data => {
+    console.log(data)
     onBtnFiveDayClick(data);
     slider1();
   });
@@ -33,21 +34,19 @@ refs.searchForm.addEventListener('submit', e => {
   preloader.search();
   setTimeout(() => {
     onBtnOneDayClick();
-    // formStar.removeClassFillYellow();
-    // formStar.addClassFillYellow(  );
+    formStar.removeClassFillYellow();
+    formStar.addClassFillYellow(  );
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-      if (data === null) {
+      if (data === '400' || data === '404') {
         notification(data);
         return;
       }
+
+      fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      });
       renderingCurrentWeather(data);
     });
-    // localStorageInput();
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      return refs.backgroundRef.setAttribute(
-        'style',
-        `background-image: url("${data.largeImg}")`,
-      );
-    });
-  }, 1000);
-});
+    localStorageInput();
+  }, 1000)
+})
