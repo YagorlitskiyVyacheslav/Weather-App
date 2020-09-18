@@ -38,3 +38,8 @@ body {
 .slick-list {
   width: 100%;
 }
+.container-for-timer-and-quote {
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
+}
