@@ -1,7 +1,3 @@
-// .gallery-visually {
-//   border-radius: 25px;
-// }
-
 .hourly-weather-wrapper {
   @include center-flex('end');
   margin-bottom: 18px;
@@ -106,10 +102,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  // .hourly-weather-next-btn-wrapper {
-  //   @include center-flex('end');
-  // }
-
   .hourly-weather-item {
     &__set-time {
       font-size: $title-text-size;
@@ -142,9 +134,10 @@
 }
 .hourly-weather-btns {
   margin: 0 auto;
-  position: relative;
   display: flex;
   width: 100%;
   height: 20px;
   justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
