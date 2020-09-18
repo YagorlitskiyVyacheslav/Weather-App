@@ -3,6 +3,7 @@ import refs from './refs';
 import fiveDaysWeatherList from '../template/fiveDays-template.hbs';
 import hourlyWeatherList from '../template/hourlyDay-template.hbs';
 import { slider2 } from './slick-carousel';
+import { each } from 'jquery';
 
 let isActiveBtnOneDay = true;
 let isActiveBtnFiveDay = false;
@@ -30,6 +31,7 @@ const onBtnFiveDayClick = function (data) {
   if (isActiveBtnFiveDay) {
     return;
   }
+  console.log(data)
   isActiveBtnFiveDay = true;
   refs.onClickBtnFiveDay.classList.remove('weather-button-unactive');
   refs.onClickBtnFiveDay.classList.add('weather-button-active');
@@ -44,19 +46,41 @@ const onBtnFiveDayClick = function (data) {
     refs.weatherContainer.insertAdjacentHTML('beforeend', markUp);
     const cityTitle = document.querySelector('.five-days-city-title');
     cityTitle.textContent = refs.cityName.textContent;
-
-    // const isActivLi=document.querySelectorAll(
-    //   '.five-days-weather-list__item');
-    
-    //   isActivLi.addEventListener(`click`, (e) => {
-    //        console.log(e.target)
-    // });
-
     const onClickMoreInfo = document.querySelector(
       '.five-days-weather-list',
     );
+
+// start
+
+    // const ActivTeg =document.querySelectorAll('.five-days-weather-list__item');
+    // console.dir(ActivTeg)
+   
+
+// Функциональный forEach
+// ActivTeg.forEach(teg => console.log(teg));
+
+// Указываем параметр idx если нужен доступ к счетчику
+// ActivTeg.forEach((teg, idx) => console.log(`index ${idx}, value ${teg}`));
+
+    // ActivTeg.addEventListener(`click`, (e) => {
+    //   let elemId
+    // console.log(e)
+    // // if(elemId!==e.target.dataset.id){
+    // //   elemId=e.target.dataset.id
+    // //   console.log(elemId, "activ")
+     
+    // //   ActivTeg.classList.add('.active-day')
+    // // }
+    // // console.dir(e.target)
+    // })
+
+
+
+// end
+
     onClickMoreInfo.addEventListener(`click`, (e) => {
       if(!e.target.dataset.id)return;
+      
       const contWeatherHourl = document.querySelector(
         '.five-days-weather__hourly',
       );
