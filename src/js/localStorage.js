@@ -36,6 +36,7 @@ refs.favoriteCityList.addEventListener('click', (e) => {
       onBtnOneDayClick();
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
         renderingCurrentWeather(data);
+
       });
       fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
         refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
