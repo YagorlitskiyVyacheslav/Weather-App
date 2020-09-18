@@ -3,6 +3,7 @@ import fetchWeather from './fetch-weather';
 import fetchImage from './fetch-bg-image';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import preloader from './preloader';
+import updateTimer from './timer-date';
 
 let cityArray = localStorage.getItem('town') ? JSON.parse(localStorage.getItem('town')) : [];
 localStorage.setItem('town', JSON.stringify(cityArray))
@@ -36,6 +37,7 @@ refs.favoriteCityList.addEventListener('click', (e) => {
       fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
         if (data === null) return;
         renderingCurrentWeather(data);
+
       });
       fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
         if (data === null) return;
