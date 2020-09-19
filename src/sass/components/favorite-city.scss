@@ -9,9 +9,25 @@
   overflow: hidden;
   position: relative;
   z-index: 2;
-  // margin: 0 20px;
   height: 28px;
 
+  & button[aria-label="Next"],
+  & button[aria-label="Previous"] {
+    margin: 0 10px;
+    position: relative;
+    border-radius: 50%;
+    border: none;
+    width: 35px;
+    height: 26px;
+    background-color: #fff;
+    @media screen and (min-width: 768px) {
+      width: 30px;
+    }
+    &:before {
+      left: 0;
+      color: #000;
+    }
+  }
 
   &__item {
     list-style-type: none;
@@ -47,28 +63,4 @@
     cursor: pointer;
     font-size: 12px;
   }
-}
-
-.slick-arrow {
-  border-radius: 50%;
-  border: none;
-  width: 35px;
-  height: 26px;
-  background-color: #fff;
-
-  @media screen and (min-width: 768px) {
-    width: 30px;
-  }
-}
-
-.slick-prev:before,
-.slick-next:before {
-  left: 0;
-  color: #000;
-}
-
-.slick-prev,
-.slick-next {
-  margin: 0 10px;
-  position: relative;
 }
