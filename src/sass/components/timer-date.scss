@@ -52,6 +52,10 @@
 .month, .time {
     width: 84px;
 }
+    
+.month {
+    margin-right: 7px;
+}
 
 .timer-date__day--month, .date__sun {
     display: flex;
@@ -67,7 +71,30 @@
 
 .sunrise, .sunset {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    text-align: center;
+    width: 120px;
+}
+.sunset {
+    position: relative;
+       
+  
+}
+.sunrise {
+    margin-right: 7px;
+  
+}
+
+.sunset:before {
+    content: "";
+    background-color: #e7e8eb;
+    opacity: .4;
+    position: absolute;
+    width: 1px;
+    height: 20px;
+    left: 0;
+    top: 50%;
+    
 }
 .sunrise__icon, .sunset__icon {
     height: 30px;
@@ -127,6 +154,9 @@ img {
     .day-box  {
         margin-top: 44px;
     }
+    .month {
+        margin-right: 10px;
+    }
 }
 @media (min-width: 1280px) {
     .timer-date {
@@ -159,5 +189,8 @@ img {
 .day-box {
     align-self: start;
     margin-left: 110px;
+}
+.sunset:before{
+    top: 0;
 }
 }
