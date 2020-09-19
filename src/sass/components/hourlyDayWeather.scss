@@ -1,6 +1,5 @@
 .hourly-weather-wrapper {
   @include center-flex('end');
-  margin-bottom: 18px;
 }
 
 .hourly-weather-close {
@@ -99,7 +98,7 @@
     pointer-events: none;
     margin-bottom: 14px;
   }
-  &__set-img{
+  &__set-img {
     margin: 0 auto;
   }
 }
@@ -121,6 +120,7 @@
 @media screen and (min-width: 1280px) {
   .hourly-weather-list {
     @include center-flex('all');
+    margin-bottom: 20px;
   }
 
   .hourly-weather-item {
@@ -139,8 +139,27 @@
   margin: 0 auto;
   display: flex;
   width: 100%;
-  height: 20px;
+  height: 30px;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top:10px;
   margin-bottom: 10px;
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
 }
+
+// .meter {
+//   height: 10px;
+//   position: relative;
+//   background: #555;
+//   border-radius: 25px;
+//   padding: 1px;
+// }
+// .meter > span {
+//    display: block;
+//   height: 100%;
+// border-radius: 8px;
+//  background-color:rgb(255, 153, 0);
+// position: relative;
+//  overflow: hidden;
+// }

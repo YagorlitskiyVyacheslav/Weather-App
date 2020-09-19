@@ -1,42 +1,42 @@
 button.five-days-weather-btns__prev.slick-arrow.slick-prev:before {
+  @media screen and (max-width: 768px) {
+  left: 70px;
+ top: -1px;
+  }
   @media screen and (min-width: 768px) {
     top: -130px;
-    left: -130px;
+    left:0;
   }
-  @media screen and (min-width: 1280px) {
-    left: -230px;
-  }
+ 
 }
 
 button.five-days-weather-btns__next.slick-arrow.slick-next:before {
+ right: 70px;
+ top: -1px;
   @media screen and (min-width: 768px) {
     top: -130px;
-    right: -130px;
+    right:0;
   }
-  @media screen and (min-width: 1280px) {
-    right: -230px;
-  }
+  
 }
 button.hourly-weather-btns__prev.slick-prev.slick-arrow:before,
 button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   position: relative;
   border-radius: 50%;
   background-color: $background-two-color;
+  background-position: bottom;
 }
 
 .slick-prev,
 .slick-next {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   line-height: 0px;
   font-size: 0px;
   cursor: pointer;
   background: transparent;
   color: transparent;
   top: 0;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
   padding: 0;
   border: none;
   outline: none;
@@ -58,27 +58,18 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
     position: absolute;
     color: $slick-arrow-color;
     opacity: $slick-opacity-default;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 .slick-slider {
   position: relative;
   box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: pan-y;
   touch-action: pan-y;
-  -webkit-tap-highlight-color: transparent;
 }
 
+
 .slick-prev:before {
-  left: 40%;
   font-size: 25px;
   font-weight: bold;
   content: '\FE64';
@@ -87,7 +78,6 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
 .slick-next:before {
   font-size: 25px;
   font-weight: bold;
-  right: 40%;
   content: '\FE65';
 }
 
@@ -111,10 +101,6 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
 }
 .slick-slider .slick-track,
 .slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   outline: none;
 }
@@ -145,12 +131,6 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
 
   .slick-loading & {
     visibility: hidden;
-  }
-
-  .slick-vertical & {
-    display: block;
-    height: auto;
-    border: 1px solid transparent;
   }
 }
 .slick-arrow.slick-hidden {

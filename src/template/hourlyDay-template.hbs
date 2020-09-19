@@ -1,7 +1,7 @@
 <div class="gallery-visually">
-  <div class="hourly-weather-wrapper">
+  {{!-- <div class="hourly-weather-wrapper">
     <button class="hourly-weather-close">&#10006;</button>
-  </div>
+  </div> --}}
   <ul class="hourly-weather-list" data-slick='{"slidesToShow": 2, "slidesToScroll": 1}'>
     {{#each forecast}}
     <li class="hourly-weather-item" id="Clear">
@@ -43,3 +43,6 @@
   <button class="hourly-weather-btns__next slick-next"></button>
 
 </div>
+{{!-- <div class="meter">
+        <span style="width: 25%"></span>
+    </div> --}}
