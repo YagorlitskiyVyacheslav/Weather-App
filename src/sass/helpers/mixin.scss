@@ -1,7 +1,6 @@
 @mixin list {
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
   list-style: none;
   justify-content: space-between;
 }
@@ -64,4 +63,4 @@
 
 @mixin inline-block($type: 'all') {
   display: inline-block;
-} 
+}

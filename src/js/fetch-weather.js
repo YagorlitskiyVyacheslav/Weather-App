@@ -42,9 +42,8 @@ export default {
             if (element.main.temp_min < min) min = element.main.temp_min;
             if (element.main.temp_max > max) max = element.main.temp_max;
 
-            console.log(new Date(element.dt * 1000 + new Date().getTimezoneOffset()*60000))
             element.time = moment(new Date(element.dt * 1000 + new Date().getTimezoneOffset() * 60000)).format('LT');
-            
+
             element.icon = element.weather[0].icon;
             element.main.temp_min = Math.round(element.main.temp_min);
             element.main.temp_max = Math.round(element.main.temp_max);
@@ -65,10 +64,10 @@ export default {
             forecast: [...day]
           });
           result[i].id = id;
-          id ++;
+          id++;
           result[i].day = dayOfTheWeek;
           result[i].date = dateMonth;
-          if(result[i] === result[0]) {
+          if (result[i] === result[0]) {
             result[i].icon = result[i].forecast[0].icon;
           } else {
             result[i].icon = result[i].forecast[2].icon;
@@ -86,8 +85,8 @@ export default {
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => {
-        if(data.cod === '404') return '404';
-        if(data.cod === '400') return '400';
+        if (data.cod === '404') return '404';
+        if (data.cod === '400') return '400';
         const result = {};
         result.timezone = data.timezone;
         result.icon = data.weather[0].icon;
@@ -102,14 +101,20 @@ export default {
         return result;
       }).catch(err => err);
   },
-  searchWeaherByGeoOn5Days({lat, lon}) {
+  searchWeaherByGeoOn5Days({
+    lat,
+    lon
+  }) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
       .then(data => data.name)
       .then(cityName => this.weatherFor5Days(cityName));
   },
-  searchWeaherByGeoOnCurrentDay({lat, lon}) {
+  searchWeaherByGeoOnCurrentDay({
+    lat,
+    lon
+  }) {
     const params = `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     return fetch(this.baseUrl + params)
       .then(res => res.json())
