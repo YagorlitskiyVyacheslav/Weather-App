@@ -4,22 +4,42 @@ import fetchImage from './fetch-bg-image';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import preloader from './preloader';
 import { onBtnOneDayClick, onBtnFiveDayClick } from './markUpFiveDay';
+import 'slick-carousel/slick/slick.min';
+require('jquery');
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 
 let cityArray = localStorage.getItem('town') ? JSON.parse(localStorage.getItem('town')) : [];
 localStorage.setItem('town', JSON.stringify(cityArray))
 const data = JSON.parse(localStorage.getItem('town'));
 
+
+$('.add-remove').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  infinite: false,
+  disabled: true,
+  // appendArrows: $('favorite-list__btn'),
+  //   prevArrow: $('.favorite-list__btn-prev'),
+  //   nextArrow: $('.favorite-list__btn-next'),
+    responsive: [
+        { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      ],
+});
+
 const createCityItem = (item, index) => {
-  refs.favoriteCityList.insertAdjacentHTML('beforeend', `<li class="favorite-list__item">
+  return `<li class="favorite-list__item">
           <p class="favorite-list__item-link">${item}</p>
-          <button class="favorite-list__item-close">&#10006;</button>
-        </li>`);
+          <button class="favorite-list__item-close js-remove-slide">&#10006;</button>
+        </li>`;
 };
 const removeFavoriteItem = (index) => {
     const favoriteListItem = document.querySelectorAll('.favorite-list__item');
     favoriteListItem[index].addEventListener('click', (e) => {
+      console.log(e.target.localName)
       if (e.target.localName === 'button') {
-        refs.favoriteCityList.removeChild(favoriteListItem[index]);
+        const slickTrack = document.querySelector('.slick-track');
+        slickTrack.removeChild(favoriteListItem[index]);
         cityArray.forEach((item, i) => {
           if (item === favoriteListItem[index].childNodes[1].textContent) {
             cityArray.splice(i, 1);
@@ -44,8 +64,13 @@ refs.favoriteCityList.addEventListener('click', (e) => {
   }
 })
 data.forEach((item, index) => {
-    createCityItem(item);
-    removeFavoriteItem(index);
+      $('.add-remove').slick(
+        'slickAdd',
+        createCityItem(item),
+      );
+      $('.js-remove-slide').on('click', function () {
+        $('.add-remove').slick('slickRemove', removeFavoriteItem(index));
+      });
 });
 
 const setInputValue = (e) => {
@@ -56,9 +81,14 @@ const setInputValue = (e) => {
     cityArray.push(refs.searchFormInput.value.toLowerCase());
     localStorage.setItem('town', JSON.stringify(cityArray));
     refs.favoriteCityStar.removeEventListener('click', setInputValue);
-    createCityItem(refs.searchFormInput.value);
+      $('.add-remove').slick(
+        'slickAdd',
+        createCityItem(refs.searchFormInput.value),
+      );
     cityArray.forEach((item, i) => {
-        removeFavoriteItem(i)
+      $('.js-remove-slide').on('click', function () {
+        $('.add-remove').slick('slickRemove', removeFavoriteItem(i));
+      });
     })
 };
 

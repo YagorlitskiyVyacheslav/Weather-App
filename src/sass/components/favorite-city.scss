@@ -1,15 +1,23 @@
+.favorite-list-wraper {
+    position: relative;
+}
 .favorite-list {
     display: flex;
     justify-content: left;
+    flex-wrap: nowrap;
     overflow: hidden;
-    margin: 0 20px;
+    position: relative;
+    z-index: 2;
+    // margin: 0 20px;
     height: 28px;
+
 
     &__item {
         list-style-type: none;
         height: 27px;
         background-color: rgba(16, 33, 54, .60);
-        display: flex;
+        display: flex !important;
+        max-width: fit-content; 
         justify-content: space-between;
         border-radius: 12px;
         margin-right: 10px;
@@ -21,7 +29,6 @@
         line-height: 27px;
         text-decoration: underline;
         display: block;
-        text-align: center;
         font-family: Lato, sans-serif;
         cursor: pointer;
         overflow: hidden;
@@ -37,4 +44,24 @@
         cursor: pointer;
         font-size: 12px;
     }
+}
+.slick-arrow {
+    border-radius: 50%;
+    border: none;
+    width: 35px;
+    height: 26px;
+    background-color: #fff;
+    @media screen and (min-width: 768px) {
+        width: 30px;
+    }
+}
+.slick-prev:before,
+.slick-next:before {
+    left: 0;
+    color: #000;
+}
+.slick-prev,
+.slick-next {
+  margin: 15px 10px 0;
+  
 }

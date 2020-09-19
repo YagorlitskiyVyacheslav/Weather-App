@@ -36,7 +36,7 @@ refs.searchForm.addEventListener('submit', e => {
   setTimeout(() => {
     onBtnOneDayClick();
     formStar.removeClassFillYellow();
-    formStar.addClassFillYellow(  );
+    formStar.addClassFillYellow();
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
       if (data === '400' || data === '404') {
         notification(data);
