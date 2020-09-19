@@ -25,4 +25,4 @@ export default {
   quoteAuthor: document.querySelector('.quote__author'),
   blickQuote: document.querySelector('.quote__block'),
   positionForBtn: document.querySelector('.buttons-today-5days'),
-}
+};

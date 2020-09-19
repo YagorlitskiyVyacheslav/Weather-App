@@ -59,6 +59,10 @@
 .time {
   width: 84px;
 }
+    
+.month {
+    margin-right: 7px;
+}
 
 .month {
   margin-right: 7px;
@@ -73,9 +77,32 @@
   margin-top: 14px;
 }
 
-.time,
-.sunset__icon {
-  position: relative;
+.sunrise, .sunset {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 120px;
+}
+.sunset {
+    position: relative;
+       
+  
+}
+.sunrise {
+    margin-right: 7px;
+  
+}
+
+.sunset:before {
+    content: "";
+    background-color: #e7e8eb;
+    opacity: .4;
+    position: absolute;
+    width: 1px;
+    height: 20px;
+    left: 0;
+    top: 50%;
+    
 }
 
 .sunrise,
@@ -126,7 +153,9 @@ img {
   max-width: 100%;
   height: auto;
 }
-
+.time {
+  position: relative;
+}
 .time:before,
 .sunset__icon:before {
   content: "";
@@ -171,20 +200,9 @@ img {
         width: 72px;
       }
     }
-  }
-
-  .timer-date__day--month,
-  .timer-date__sun {
-    font-size: 18px;
-  }
-
-  .day-box {
-    margin-top: 44px;
-  }
-
-  .month {
-    margin-right: 10px;
-  }
+    .month {
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -231,4 +249,8 @@ img {
   .sunset:before {
     top: 0;
   }
+}
+.sunset:before{
+    top: 0;
+}
 }

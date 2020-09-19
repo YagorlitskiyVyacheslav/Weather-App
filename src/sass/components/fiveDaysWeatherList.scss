@@ -1,6 +1,5 @@
 image {
   width: 100%;
-  height: fit-content;
 }
 
 .weather-5day-container {
@@ -124,11 +123,9 @@ image {
     @media screen and (max-width: 768px) {
       margin-bottom: 6px;
     }
-
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
-
     @media screen and (min-width: 1280px) {
       margin-bottom: 15px;
     }
@@ -142,7 +139,6 @@ image {
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
-
     @media screen and (min-width: 1280px) {
       margin-bottom: 15px;
     }
@@ -152,7 +148,6 @@ image {
     width: 58px;
     height: auto;
     margin: 0 auto;
-
     @media screen and (min-width: 768px) {
       margin-bottom: 5px;
     }
@@ -169,7 +164,6 @@ image {
       height: 45px;
       margin-bottom: 10px;
     }
-
     @media screen and (min-width: 1280px) {
       height: 60px;
     }
@@ -205,11 +199,9 @@ image {
     @include font-size1;
     color: gray;
     justify-content: center;
-
     @media screen and (max-width: 768px) {
       margin-bottom: 6px;
     }
-
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
@@ -228,11 +220,9 @@ image {
   display: block;
   overflow: hidden;
 }
-
 .active-day {
   color: rgb(255, 153, 0);
 }
-
 .active-btn {
   color: white;
 }
@@ -244,7 +234,6 @@ image {
   justify-content: space-around;
   position: relative;
   margin-bottom: 5px;
-
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
     height: 1px;
