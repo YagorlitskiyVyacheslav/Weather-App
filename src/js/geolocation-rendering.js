@@ -1,10 +1,9 @@
 import fetchWeather from './fetch-weather';
 import refs from './refs';
 import fetchImage from './fetch-bg-image';
-import { onBtnOneDayClick, onBtnFiveDayClick } from './markUpFiveDay';
 import renderingCurrentWeather from './renderingCurrentWeather';
 import updateTimer from './timer-date';
-
+import preloader from './preloader';
 const onGetPositionSuccess = location => {
   const coords = {
     lat: location.coords.latitude,
@@ -17,6 +16,8 @@ const onGetPositionSuccess = location => {
       clearInterval(timerID);
     });
   });
+  document.body.removeAttribute('style');
+  preloader.start();
 };
 const onGetPositionError = error => {
   error.defaultCity = () => {
@@ -35,6 +36,8 @@ const onGetPositionError = error => {
       `background-image: url("${data.largeImg}")`,
     );
   });
+  document.body.removeAttribute('style');
+  preloader.start();
 };
 export default () => {
   navigator.geolocation.getCurrentPosition(

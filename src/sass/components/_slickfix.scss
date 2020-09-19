@@ -1,24 +1,27 @@
 button.five-days-weather-btns__prev.slick-arrow.slick-prev:before {
   @media screen and (max-width: 768px) {
-  left: 70px;
- top: -1px;
+    left: 70px;
+    top: -1px;
   }
+
   @media screen and (min-width: 768px) {
     top: -130px;
-    left:0;
+    left: 0;
   }
- 
+
 }
 
 button.five-days-weather-btns__next.slick-arrow.slick-next:before {
- right: 70px;
- top: -1px;
+  right: 70px;
+  top: -1px;
+
   @media screen and (min-width: 768px) {
     top: -130px;
-    right:0;
+    right: 0;
   }
-  
+
 }
+
 button.hourly-weather-btns__prev.slick-prev.slick-arrow:before,
 button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   position: relative;
@@ -40,18 +43,22 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   padding: 0;
   border: none;
   outline: none;
+
   &:hover,
   &:focus {
     outline: none;
     background: transparent;
     color: transparent;
+
     &:before {
       opacity: $slick-opacity-on-hover;
     }
   }
+
   &.slick-disabled:before {
     opacity: $slick-opacity-not-active;
   }
+
   &:before {
     width: 30px;
     height: 30px;
@@ -90,15 +97,18 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   &:focus {
     outline: none;
   }
+
   &:active {
     outline: none;
   }
+
   &.dragging {
     cursor: pointer;
     cursor: hand;
     outline: none;
   }
 }
+
 .slick-slider .slick-track,
 .slick-slider .slick-list {
   transform: translate3d(0, 0, 0);
@@ -109,12 +119,15 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   float: left;
   height: auto;
   min-height: 1px;
+
   [dir='rtl'] & {
     float: right;
   }
+
   img {
     display: block;
   }
+
   &.slick-loading img {
     display: none;
   }
@@ -133,6 +146,7 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
     visibility: hidden;
   }
 }
+
 .slick-arrow.slick-hidden {
   display: none;
 }

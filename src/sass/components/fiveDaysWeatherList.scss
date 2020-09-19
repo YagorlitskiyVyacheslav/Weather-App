@@ -2,6 +2,7 @@ image {
   width: 100%;
   height: fit-content;
 }
+
 .weather-5day-container {
   display: none;
   margin: 0 auto;
@@ -15,6 +16,7 @@ image {
   &__wrapper {
     display: block;
     height: auto;
+
     @media screen and (max-width: 768px) {
       width: 230px;
     }
@@ -23,22 +25,26 @@ image {
       width: 608px;
       @include border;
     }
+
     @media screen and (min-width: 1280px) {
       width: 1060px;
     }
   }
 }
+
 .five-days-city-title {
   font-weight: bold;
   color: white;
   font-size: 18px;
   margin-bottom: 15px;
+
   @media screen and (min-width: 768px) {
     font-size: 28px;
     margin-bottom: 25px;
     margin-top: 20px;
   }
 }
+
 .five-days-weather-list {
   justify-content: center;
   width: 100%;
@@ -47,6 +53,7 @@ image {
   flex-direction: row;
   font-family: 'Lato';
   overflow: hidden;
+
   @media screen and (max-width: 768px) {
     height: 160px;
   }
@@ -55,6 +62,7 @@ image {
     padding: 40px 30px 0 30px;
     height: 262px;
   }
+
   @media screen and (min-width: 1280px) {
     height: 300px;
   }
@@ -67,14 +75,17 @@ image {
     cursor: pointer;
     margin-right: 10px;
     margin-left: 10px;
+
     @media screen and (max-width: 768px) {
       width: 70px;
       min-height: 160px !important;
     }
+
     @media screen and (min-width: 768px) {
       width: 80px;
       min-height: 200px !important;
     }
+
     @media screen and (min-width: 1280px) {
       width: 125px;
       min-height: 240px !important;
@@ -90,6 +101,7 @@ image {
       border: none;
     }
   }
+
   &__item--btn {
     color: gray;
     line-height: 1.6px;
@@ -97,25 +109,31 @@ image {
     text-decoration: underline;
     background: transparent;
     @include font-size1;
+
     &:hover,
     &:active {
       outline: none;
       cursor: pointer;
     }
   }
+
   &__date {
     display: block;
     @include font-size2;
+
     @media screen and (max-width: 768px) {
       margin-bottom: 6px;
     }
+
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
+
     @media screen and (min-width: 1280px) {
       margin-bottom: 15px;
     }
   }
+
   &__day {
     display: block;
     color: gray;
@@ -124,31 +142,38 @@ image {
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
+
     @media screen and (min-width: 1280px) {
       margin-bottom: 15px;
     }
   }
+
   &__img {
     width: 58px;
     height: auto;
     margin: 0 auto;
+
     @media screen and (min-width: 768px) {
       margin-bottom: 5px;
     }
   }
+
   &__tempr {
     position: relative;
     width: 100%;
     height: 30px;
     @include list;
     justify-content: center;
+
     @media screen and (min-width: 768px) {
       height: 45px;
       margin-bottom: 10px;
     }
+
     @media screen and (min-width: 1280px) {
       height: 60px;
     }
+
     &::after {
       position: absolute;
       display: block;
@@ -163,9 +188,11 @@ image {
       transform: translateX(-250%);
       background-color: gray;
     }
+
     &--min {
       margin-right: 5px;
     }
+
     &--max {
       margin-left: 5px;
     }
@@ -178,13 +205,16 @@ image {
     @include font-size1;
     color: gray;
     justify-content: center;
+
     @media screen and (max-width: 768px) {
       margin-bottom: 6px;
     }
+
     @media screen and (min-width: 768px) {
       margin-bottom: 11px;
     }
   }
+
   &__value {
     display: block;
     color: rgb(255, 153, 0);
@@ -198,12 +228,15 @@ image {
   display: block;
   overflow: hidden;
 }
+
 .active-day {
   color: rgb(255, 153, 0);
 }
+
 .active-btn {
   color: white;
 }
+
 .five-days-weather-btns {
   width: 100%;
   height: 20px;
@@ -211,6 +244,7 @@ image {
   justify-content: space-around;
   position: relative;
   margin-bottom: 5px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
     height: 1px;

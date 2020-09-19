@@ -1,67 +1,74 @@
 .favorite-list-wraper {
-    position: relative;
+  position: relative;
 }
+
 .favorite-list {
-    display: flex;
-    justify-content: left;
-    flex-wrap: nowrap;
+  display: flex;
+  justify-content: left;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  // margin: 0 20px;
+  height: 28px;
+
+
+  &__item {
+    list-style-type: none;
+    height: 27px;
+    background-color: rgba(16, 33, 54, .60);
+    display: flex !important;
+    max-width: fit-content;
+    justify-content: space-between;
+    border-radius: 12px;
+    margin-right: 10px;
+    color: #fff;
+  }
+
+  &__item-link {
+    padding-left: 14px;
+    font-size: 12px;
+    line-height: 27px;
+    text-decoration: underline;
+    display: block;
+    font-family: Lato, sans-serif;
+    cursor: pointer;
     overflow: hidden;
-    position: relative;
-    z-index: 2;
-    // margin: 0 20px;
-    height: 28px;
+    text-transform: capitalize;
+  }
 
-
-    &__item {
-        list-style-type: none;
-        height: 27px;
-        background-color: rgba(16, 33, 54, .60);
-        display: flex !important;
-        max-width: fit-content; 
-        justify-content: space-between;
-        border-radius: 12px;
-        margin-right: 10px;
-        color: #fff;
-    }
-    &__item-link {
-        padding-left: 14px;
-        font-size: 12px;
-        line-height: 27px;
-        text-decoration: underline;
-        display: block;
-        font-family: Lato, sans-serif;
-        cursor: pointer;
-        overflow: hidden;
-        text-transform: capitalize;
-    }
-    &__item-close {
-        color: #fff;
-        width: 24px;
-        font-size: 14px;
-        height: 100%;
-        background-color: hsla(0, 0%, 100%, 0);
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-    }
-}
-.slick-arrow {
-    border-radius: 50%;
+  &__item-close {
+    color: #fff;
+    width: 24px;
+    font-size: 14px;
+    height: 100%;
+    background-color: hsla(0, 0%, 100%, 0);
     border: none;
-    width: 35px;
-    height: 26px;
-    background-color: #fff;
-    @media screen and (min-width: 768px) {
-        width: 30px;
-    }
+    cursor: pointer;
+    font-size: 12px;
+  }
 }
+
+.slick-arrow {
+  border-radius: 50%;
+  border: none;
+  width: 35px;
+  height: 26px;
+  background-color: #fff;
+
+  @media screen and (min-width: 768px) {
+    width: 30px;
+  }
+}
+
 .slick-prev:before,
 .slick-next:before {
-    left: 0;
-    color: #000;
+  left: 0;
+  color: #000;
 }
+
 .slick-prev,
 .slick-next {
-  margin: 15px 10px 0;
-  
+  margin: 0 10px;
+  position: relative;
 }

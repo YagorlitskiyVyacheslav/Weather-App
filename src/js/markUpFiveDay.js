@@ -2,14 +2,18 @@ import fetchWeater from './fetch-weather';
 import refs from './refs';
 import fiveDaysWeatherList from '../template/fiveDays-template.hbs';
 import hourlyWeatherList from '../template/hourlyDay-template.hbs';
-import { slider2 } from './slick-carousel';
-import { each } from 'jquery';
+import {
+  slider2
+} from './slick-carousel';
+import {
+  each
+} from 'jquery';
 
 let isActiveBtnOneDay = true;
 let isActiveBtnFiveDay = false;
 
 const onBtnOneDayClick = function () {
-  
+
   if (!isActiveBtnOneDay) {
     return;
   }
@@ -84,4 +88,7 @@ const onBtnFiveDayClick = function (data) {
     slider2();
   });
 };
-export { onBtnOneDayClick, onBtnFiveDayClick };
+export {
+  onBtnOneDayClick,
+  onBtnFiveDayClick
+};
