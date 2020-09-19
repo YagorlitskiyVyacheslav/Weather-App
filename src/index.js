@@ -12,8 +12,8 @@ import { error, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import { slider1 } from './js/slick-carousel';
 
-import localStorageInput from './js/localStorage';
-import formStar from './js/favorite-sity-star';
+// import localStorageInput from './js/localStorage';
+// import formStar from './js/favorite-sity-star';
 import notification from './js/notification';
 import moment from 'moment';
 moment().format();
@@ -47,6 +47,7 @@ refs.searchForm.addEventListener('submit', e => {
         refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
       });
       renderingCurrentWeather(data);
+
     });S
     localStorageInput();
   }, 1000)
