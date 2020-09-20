@@ -19,7 +19,6 @@ refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.onClickBtnFiveDay.addEventListener('click', () => {
   const cityName = refs.cityName.textContent.split(',')[0];
   fetchWeather.weatherFor5Days(cityName).then(data => {
-    console.log(data) 
     onBtnFiveDayClick(data);
     slider1();
   });

@@ -35,7 +35,6 @@ function slider2() {
       nextSlide,
     ) {
       calc = (nextSlide / (slick.slideCount - 2)) * 100;
-      console.log(nextSlide, slick.slideCount);
       if (nextSlide === 0) {
         $progressBar
           .css('background-size', calc + 25 + '% 100%')

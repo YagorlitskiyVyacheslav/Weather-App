@@ -16,7 +16,6 @@ let cityArray = localStorage.getItem('town') ? JSON.parse(localStorage.getItem('
 localStorage.setItem('town', JSON.stringify(cityArray))
 const data = JSON.parse(localStorage.getItem('town'));
 
-
 $('.add-remove').slick({
   slidesToShow: 4,
   slidesToScroll: 1,
