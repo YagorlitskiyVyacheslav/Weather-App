@@ -91,7 +91,11 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   overflow: hidden;
   margin: 15;
   padding: 0;
-
+   //  Начало! не могу проверить но может это пофиксит когда ночью заходит 5 дней вместо 6
+  @media screen and (min-width: 1280px) {
+    text-align: center;
+  }
+  // конец
   &:focus {
     outline: none;
   }
@@ -117,11 +121,13 @@ button.hourly-weather-btns__next.slick-next.slick-arrow:before {
   float: left;
   height: auto;
   min-height: 1px;
+  // ниже добавить outline: none; (убираем бордер при наведении )
+  outline: none;
 
   [dir='rtl'] & {
     float: right;
   }
-
+  
   img {
     display: block;
   }
