@@ -2,36 +2,25 @@ import refs from './refs';
 import moment from 'moment';
 moment().format();
 
+export default timezone => {
 
-function updateDayOfWeek(){
-    const today = moment();
-    const dayIsToday = today.format('ddd');
+  function updateTime() {
+    const deltaTimezone = new Date(
+      Date.now() - new Date().getTimezoneOffset() * 60000 - timezone * 1000,
+    );
+
+    const dayIsToday = moment().format('ddd');
     refs.dayOfWeek.innerHTML = dayIsToday;
-}
-updateDayOfWeek();
 
-function updateDayOfMonth() {
-    const number = moment();
-    const dayOfTheMonth = number.format('DD');
+    const dayOfTheMonth = moment().format('DD');
     refs.dayOfMonth.innerHTML = dayOfTheMonth;
-}
-updateDayOfMonth();
 
-function updateMonth() {
-    const mounth = moment();
-    const currentMounth = mounth.format('MMMM');
+    const currentMounth = moment().format('MMMM');
     refs.monthSpan.innerHTML = currentMounth;
-}
-updateMonth();  
+    const currentTime = moment(deltaTimezone).format('HH:mm:ss');
+    refs.timeSpan.textContent = currentTime;
+  }
+  updateTime();
+  return setInterval(updateTime, 1000);
 
-// refs.dayOfWeek.addEventListener('load', updateDayOfWeek());
-// refs.dayOfMonth.addEventListener('load', updateDayOfMonth());
-// refs.monthSpan.addEventListener('load', updateMonth());
-
-
-function updateTime() {
-const now = moment();
-const currentTime = now.format('HH:mm:ss');
-refs.timeSpan.textContent = currentTime;
-}
- setInterval(updateTime, 1000);
+};

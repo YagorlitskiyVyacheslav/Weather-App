@@ -2,31 +2,33 @@ import './sass/main.scss';
 import refs from './js/refs';
 import fetchWeather from './js/fetch-weather';
 import fetchImage from './js/fetch-bg-image';
-import quotes from './js/quote';
-import timerDate from './js/timer-date';
+import './js/quote';
+import './js/timer-date';
 import preloader from './js/preloader';
 import geolocation from './js/geolocation-rendering';
 import { onBtnOneDayClick, onBtnFiveDayClick } from './js/markUpFiveDay';
 import renderingCurrentWeather from './js/renderingCurrentWeather';
+<<<<<<< HEAD
 import 'slick-carousel/slick/slick.min';
 import slick2 from 'slick-carousel';
 require('jquery');
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+=======
+import { slider1 } from './js/slick-carousel';
+>>>>>>> ea3c7c9ed5d769ababf91bde26b083a895e5b6c1
 import localStorageInput from './js/localStorage';
 import formStar from './js/favorite-sity-star';
-import notification from './js/notification'
-import moment from 'moment';
-moment().format();
+import notification from './js/notification';
+import updateTimer from './js/timer-date';
 
-
-document.addEventListener('DOMContentLoaded', preloader.start());
 document.addEventListener('DOMContentLoaded', geolocation);
 refs.onClickBtnOneDay.addEventListener(`click`, onBtnOneDayClick);
 refs.onClickBtnFiveDay.addEventListener('click', () => {
   const cityName = refs.cityName.textContent.split(',')[0];
   fetchWeather.weatherFor5Days(cityName).then(data => {
     onBtnFiveDayClick(data);
+<<<<<<< HEAD
     $(document).width(function () {
       $('.five-days-weather-list').slick({
         arrows: true,
@@ -45,22 +47,29 @@ refs.onClickBtnFiveDay.addEventListener('click', () => {
 });
 
 refs.searchForm.addEventListener('submit', (e) => {
+=======
+    slider1();
+  });
+});
+refs.searchForm.addEventListener('submit', e => {
+>>>>>>> ea3c7c9ed5d769ababf91bde26b083a895e5b6c1
   e.preventDefault();
-  preloader.search()
+  preloader.search();
   setTimeout(() => {
     onBtnOneDayClick();
     formStar.removeClassFillYellow();
     formStar.addClassFillYellow();
     fetchWeather.currentWeather(refs.searchFormInput.value).then(data => {
-      if (data === null) {
+      if (data === '400' || data === '404') {
         notification(data);
-        return
+        return;
       }
+
+      fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
+        refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
+      });
       renderingCurrentWeather(data);
     });
     localStorageInput();
-    fetchImage.fetchImage(refs.searchFormInput.value).then(data => {
-      return refs.backgroundRef.setAttribute("style", `background-image: url("${data.largeImg}")`);
-    });
   }, 1000)
 })
