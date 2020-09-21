@@ -206,32 +206,6 @@ img {
 }
 
 @media (min-width: 1280px) {
-<<<<<<< HEAD
-    .timer-date {
-        height: 218px;
-        width: 600px;
-        border-radius: 0;
-        border-top-right-radius: 35px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        margin-bottom: 0;
-        &__day {
-            align-self: start;
-            margin-left: 110px;
-        }
-        &__container {
-            margin-left: 40px;
-            display: flex;
-            width: 430px;
-            justify-content: space-between;
-            & div {
-                margin: 0;
-            }
-        }
-    }  
-    .sunrise__icon, .sunset__icon {
-=======
   .timer-date {
     height: 218px;
     width: 600px;
@@ -259,7 +233,6 @@ img {
 
   .sunrise__icon,
   .sunset__icon {
->>>>>>> ea3c7c9ed5d769ababf91bde26b083a895e5b6c1
     margin-top: -10px;
   }
 
